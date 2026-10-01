@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="euc-kr">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>¿ë»ê±¸Ã» AI ÇàÁ¤ ÇÃ·§Æû ? ½Ã¿¬¿ë ¸ñ¾÷</title>
+<title>ìš©ì‚°êµ¬ì²­ AI í–‰ì • í”Œëž«í¼ ? ì‹œì—°ìš© ëª©ì—…</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme: light only;
-  --navy:#133A66;          /* ±¸Á¤ ±â°ü»ö */
+  --navy:#133A66;          /* êµ¬ì • ê¸°ê´€ìƒ‰ */
   --navy-deep:#0B2645;
   --gov-blue:#1263AC;
   --paper:#F5F7FA;
@@ -18,7 +18,7 @@
   --line:#DCE3EC;
   --ink:#1C2534;
   --sub:#5B6B80;
-  --ai:#0D8F7B;            /* AI ±â´É ½Äº°»ö (Ã»·Ï) */
+  --ai:#0D8F7B;            /* AI ê¸°ëŠ¥ ì‹ë³„ìƒ‰ (ì²­ë¡) */
   --ai-soft:#E4F5F1;
   --ai-line:#9BD9CD;
   --gold:#C89B3C;
@@ -32,7 +32,7 @@ body{
 }
 ::selection{background:var(--ai);color:#fff}
 
-/* ---------- µ¥¸ð ÄÁÆ®·Ñ ¹Ù ---------- */
+/* ---------- ë°ëª¨ ì»¨íŠ¸ë¡¤ ë°” ---------- */
 .demo-bar{
   position:sticky;top:0;z-index:100;
   background:var(--navy-deep);color:#fff;
@@ -57,7 +57,7 @@ body.ai-on .toggle::after{transform:translateX(20px)}
 .toggle-label{font-weight:700}
 .toggle-label b{color:#7FE0CF}
 
-/* AI ÇÏÀÌ¶óÀÌÆ® ¸ðµå */
+/* AI í•˜ì´ë¼ì´íŠ¸ ëª¨ë“œ */
 .ai-feature{position:relative;transition:box-shadow .3s, outline-color .3s;outline:2px solid transparent;outline-offset:3px}
 body.ai-on .ai-feature{outline-color:var(--ai);box-shadow:0 0 0 6px rgba(13,143,123,.08)}
 .ai-badge{
@@ -67,7 +67,7 @@ body.ai-on .ai-feature{outline-color:var(--ai);box-shadow:0 0 0 6px rgba(13,143,
 }
 .ai-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#B7F0E4}
 
-/* ---------- Çì´õ (±¸Ã» »çÀÌÆ® ÀçÇö) ---------- */
+/* ---------- í—¤ë” (êµ¬ì²­ ì‚¬ì´íŠ¸ ìž¬í˜„) ---------- */
 header.site{
   background:linear-gradient(180deg,var(--navy) 0%,#17487C 100%);color:#fff;
 }
@@ -99,7 +99,7 @@ nav.gnb a:hover,nav.gnb a:focus-visible{background:rgba(255,255,255,.12);color:#
 nav.gnb a.ai-nav{color:#8CEBD9}
 body.ai-on nav.gnb a.ai-nav{background:rgba(13,143,123,.35);color:#B9F5E9}
 
-/* ---------- È÷¾î·Î: AI ÅëÇÕ°Ë»ö ---------- */
+/* ---------- ížˆì–´ë¡œ: AI í†µí•©ê²€ìƒ‰ ---------- */
 .hero{
   background:linear-gradient(180deg,#17487C 0%,#1E5996 60%,#F5F7FA 60.1%);
   padding:44px 24px 0;
@@ -141,7 +141,7 @@ body.ai-on nav.gnb a.ai-nav{background:rgba(13,143,123,.35);color:#B9F5E9}
 .chips button.en{border-color:#C9DCF0;color:#1263AC;font-weight:700}
 .chips button.en:hover{border-color:var(--ai);color:var(--ai)}
 
-/* ´äº¯ ÆÐ³Î */
+/* ë‹µë³€ íŒ¨ë„ */
 .answer{display:none;padding:20px 22px;border-top:1px solid var(--line)}
 .answer.show{display:block;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -158,7 +158,7 @@ body.ai-on nav.gnb a.ai-nav{background:rgba(13,143,123,.35);color:#B9F5E9}
 .src::before{content:'??'}
 .answer .note{font-size:.72rem;color:#93A2B7;margin-top:12px}
 
-/* ---------- º»¹® °øÅë ---------- */
+/* ---------- ë³¸ë¬¸ ê³µí†µ ---------- */
 main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .section-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .section-head h2{
@@ -167,7 +167,7 @@ main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .section-head .sub{color:var(--sub);font-size:.85rem}
 .section{margin-bottom:56px}
 
-/* ---------- ±â´É µ¥¸ð: ÅÇ ---------- */
+/* ---------- ê¸°ëŠ¥ ë°ëª¨: íƒ­ ---------- */
 .feature-shell{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:16px}
 .tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto}
 .tabs button{
@@ -180,7 +180,7 @@ main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .panel{display:none;padding:24px}
 .panel.active{display:block;animation:fadeUp .3s ease}
 
-/* °í½Ã°ø°í ¿ä¾à ÆÐ³Î */
+/* ê³ ì‹œê³µê³  ìš”ì•½ íŒ¨ë„ */
 .rec-list{display:grid;gap:10px}
 .rec{
   display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:10px;
@@ -204,7 +204,7 @@ main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .kw-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
 .kw{background:#fff;border:1px solid var(--ai-line);color:#0A6E5F;font-size:.72rem;font-weight:700;border-radius:20px;padding:3px 10px}
 
-/* ¹Î¿ø »çÀüºÐ·ù ÆÐ³Î */
+/* ë¯¼ì› ì‚¬ì „ë¶„ë¥˜ íŒ¨ë„ */
 .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:760px){.review-grid{grid-template-columns:1fr}}
 .review-grid textarea{
@@ -230,7 +230,7 @@ main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .spinner{display:none;color:var(--ai);font-size:.85rem;font-weight:700;padding-top:80px;text-align:center}
 .spinner.show{display:block}
 
-/* Áö¿ø»ç¾÷ ¸ÅÄª ÆÐ³Î */
+/* ì§€ì›ì‚¬ì—… ë§¤ì¹­ íŒ¨ë„ */
 .match-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .match-top select{
   font-family:inherit;font-size:.9rem;padding:10px 14px;border:1px solid var(--line);
@@ -247,7 +247,7 @@ main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .match-card .why{margin-top:10px;background:var(--ai-soft);border-radius:8px;padding:8px 12px;font-size:.78rem;color:#0A6E5F}
 .match-card .why b{color:#075E51}
 
-/* ---------- ±¸¹Î Ãªº¿ ---------- */
+/* ---------- êµ¬ë¯¼ ì±—ë´‡ ---------- */
 .civic{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;margin-top:16px}
 @media(max-width:820px){.civic{grid-template-columns:1fr}}
 .civic-copy h3{font-size:1.05rem;font-weight:900;color:var(--navy);margin-bottom:10px}
@@ -275,7 +275,7 @@ main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
 .chat-actions button:hover{background:var(--ai);color:#fff}
 .chat-actions button:disabled{opacity:.4;cursor:default}
 
-/* ---------- µµÀÔ È¿°ú / Á¦¾È»ç ---------- */
+/* ---------- ë„ìž… íš¨ê³¼ / ì œì•ˆì‚¬ ---------- */
 .value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
 @media(max-width:900px){.value-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.value-grid{grid-template-columns:1fr}}
@@ -312,55 +312,55 @@ footer.site b{color:#C7D6EA}
 </head>
 <body class="ai-on">
 
-<!-- µ¥¸ð ÄÁÆ®·Ñ -->
+<!-- ë°ëª¨ ì»¨íŠ¸ë¡¤ -->
 <div class="demo-bar">
-  <span class="tag">½Ã¿¬¿ë ¸ñ¾÷</span>
-  <span>¿ë»ê±¸Ã» È¨ÆäÀÌÁö AI °íµµÈ­ Á¦¾È ¡¤ µ¥ÀÌÅÍ´Â °¡»ó ¿¹½ÃÀÔ´Ï´Ù</span>
+  <span class="tag">ì‹œì—°ìš© ëª©ì—…</span>
+  <span>ìš©ì‚°êµ¬ì²­ í™ˆíŽ˜ì´ì§€ AI ê³ ë„í™” ì œì•ˆ Â· ë°ì´í„°ëŠ” ê°€ìƒ ì˜ˆì‹œìž…ë‹ˆë‹¤</span>
   <span class="grow"></span>
   <label class="toggle-wrap" for="aiToggle">
-    <span class="toggle-label">½Å±Ô <b>AI ±â´É</b> ÇÏÀÌ¶óÀÌÆ®</span>
+    <span class="toggle-label">ì‹ ê·œ <b>AI ê¸°ëŠ¥</b> í•˜ì´ë¼ì´íŠ¸</span>
     <span class="toggle" id="aiToggle" role="switch" aria-checked="true" tabindex="0"></span>
   </label>
 </div>
 
-<!-- ±âÁ¸ ±¸Ã» »çÀÌÆ® Çì´õ ÀçÇö -->
+<!-- ê¸°ì¡´ êµ¬ì²­ ì‚¬ì´íŠ¸ í—¤ë” ìž¬í˜„ -->
 <header class="site">
-  <div class="util"><span>·Î±×ÀÎ</span><span>È¸¿ø°¡ÀÔ</span><span class="lang">?? 7°³ ±¹¾î</span><span>»çÀÌÆ®¸Ê</span></div>
+  <div class="util"><span>ë¡œê·¸ì¸</span><span>íšŒì›ê°€ìž…</span><span class="lang">?? 7ê°œ êµ­ì–´</span><span>ì‚¬ì´íŠ¸ë§µ</span></div>
   <div class="masthead">
-    <div class="emblem">¿ë»ê</div>
-    <div class="sitename">¼­¿ïÆ¯º°½Ã ¿ë»ê±¸<small>YONGSAN-GU OFFICE</small></div>
+    <div class="emblem">ìš©ì‚°</div>
+    <div class="sitename">ì„œìš¸íŠ¹ë³„ì‹œ ìš©ì‚°êµ¬<small>YONGSAN-GU OFFICE</small></div>
   </div>
-  <nav class="gnb" aria-label="ÁÖ¸Þ´º">
-    <a href="#">Á¾ÇÕ¹Î¿ø</a>
-    <a href="#">Âü¿©¼ÒÅë</a>
-    <a href="#">ÇàÁ¤Á¤º¸</a>
-    <a href="#">ºÐ¾ßº°Á¤º¸</a>
-    <a href="#">°í½Ã¡¤°ø°í</a>
-    <a href="#">¿ë»ê¼Ò°³</a>
-    <a href="#" class="ai-nav">AI ±¸Á¤µµ¿ì¹Ì <span class="ai-badge">NEW</span></a>
+  <nav class="gnb" aria-label="ì£¼ë©”ë‰´">
+    <a href="#">ì¢…í•©ë¯¼ì›</a>
+    <a href="#">ì°¸ì—¬ì†Œí†µ</a>
+    <a href="#">í–‰ì •ì •ë³´</a>
+    <a href="#">ë¶„ì•¼ë³„ì •ë³´</a>
+    <a href="#">ê³ ì‹œÂ·ê³µê³ </a>
+    <a href="#">ìš©ì‚°ì†Œê°œ</a>
+    <a href="#" class="ai-nav">AI êµ¬ì •ë„ìš°ë¯¸ <span class="ai-badge">NEW</span></a>
   </nav>
 
-  <!-- È÷¾î·Î: AI ÅëÇÕ°Ë»ö -->
+  <!-- ížˆì–´ë¡œ: AI í†µí•©ê²€ìƒ‰ -->
   <div class="hero">
     <div class="hero-inner">
-      <h1>±¸Ã»¿¡ <em>¹«¾ùÀÌµç</em> ¹°¾îº¸¼¼¿ä</h1>
-      <p class="lede">¹Î¿ø ¾È³» ¡¤ °í½Ã°ø°í ¡¤ Áö¿ø»ç¾÷À» AI°¡ ÇÑ ¹ø¿¡ Ã£¾Æ ±Ù°Å¿Í ÇÔ²² ? 7°³ ±¹¾î·Î ´äÇÕ´Ï´Ù</p>
+      <h1>êµ¬ì²­ì— <em>ë¬´ì—‡ì´ë“ </em> ë¬¼ì–´ë³´ì„¸ìš”</h1>
+      <p class="lede">ë¯¼ì› ì•ˆë‚´ Â· ê³ ì‹œê³µê³  Â· ì§€ì›ì‚¬ì—…ì„ AIê°€ í•œ ë²ˆì— ì°¾ì•„ ê·¼ê±°ì™€ í•¨ê»˜ ? 7ê°œ êµ­ì–´ë¡œ ë‹µí•©ë‹ˆë‹¤</p>
       <div class="searchbox ai-feature">
         <div class="search-row">
           <div class="orb" aria-hidden="true">AI</div>
-          <input id="qInput" type="text" placeholder="¿¹) ´ëÇüÆó±â¹°Àº ¾î¶»°Ô ¹ö¸®³ª¿ä?" aria-label="AI ±¸Á¤ Áú¹® ÀÔ·Â">
-          <button class="ask-btn" id="askBtn">Áú¹®ÇÏ±â</button>
+          <input id="qInput" type="text" placeholder="ì˜ˆ) ëŒ€í˜•íê¸°ë¬¼ì€ ì–´ë–»ê²Œ ë²„ë¦¬ë‚˜ìš”?" aria-label="AI êµ¬ì • ì§ˆë¬¸ ìž…ë ¥">
+          <button class="ask-btn" id="askBtn">ì§ˆë¬¸í•˜ê¸°</button>
         </div>
         <div class="chips" id="chips">
-          <button data-q="waste">´ëÇüÆó±â¹° ¹èÃâ ¹æ¹ý</button>
-          <button data-q="hannam">ÇÑ³²µ¿ Àç°³¹ß °ø¶÷ ¾îµð¼­ ºÁ¿ä?</button>
+          <button data-q="waste">ëŒ€í˜•íê¸°ë¬¼ ë°°ì¶œ ë°©ë²•</button>
+          <button data-q="hannam">í•œë‚¨ë™ ìž¬ê°œë°œ ê³µëžŒ ì–´ë””ì„œ ë´ìš”?</button>
           <button data-q="foreign" class="en">?? What support is available for foreign residents?</button>
         </div>
         <div class="answer" id="answer" aria-live="polite">
           <div class="q" id="ansQ"></div>
           <div class="a" id="ansA"></div>
           <div class="src-row" id="ansSrc"></div>
-          <div class="note">¡Ø ´äº¯Àº ±¸Ã» °ø°³ µ¥ÀÌÅÍ(¹Î¿øÆí¶÷¡¤°í½Ã°ø°í¡¤Áö¿ø»ç¾÷ °ø°í)¿¡ ±Ù°ÅÇÏ¸ç, ÃâÃ³ Ä«µå¸¦ ´©¸£¸é ¿ø¹®À¸·Î ÀÌµ¿ÇÕ´Ï´Ù. Áú¹® ¾ð¾î¸¦ ÀÚµ¿ °¨ÁöÇØ °°Àº ¾ð¾î·Î ´äÇÕ´Ï´Ù. (½Ã¿¬¿ë °¡»ó µ¥ÀÌÅÍ)</div>
+          <div class="note">â€» ë‹µë³€ì€ êµ¬ì²­ ê³µê°œ ë°ì´í„°(ë¯¼ì›íŽ¸ëžŒÂ·ê³ ì‹œê³µê³ Â·ì§€ì›ì‚¬ì—… ê³µê³ )ì— ê·¼ê±°í•˜ë©°, ì¶œì²˜ ì¹´ë“œë¥¼ ëˆ„ë¥´ë©´ ì›ë¬¸ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤. ì§ˆë¬¸ ì–¸ì–´ë¥¼ ìžë™ ê°ì§€í•´ ê°™ì€ ì–¸ì–´ë¡œ ë‹µí•©ë‹ˆë‹¤. (ì‹œì—°ìš© ê°€ìƒ ë°ì´í„°)</div>
         </div>
       </div>
     </div>
@@ -369,199 +369,199 @@ footer.site b{color:#C7D6EA}
 
 <main>
 
-  <!-- ±â´É µ¥¸ð -->
+  <!-- ê¸°ëŠ¥ ë°ëª¨ -->
   <section class="section">
     <div class="section-head">
-      <h2>AI ÇàÁ¤ Áö¿ø ±â´É</h2>
-      <span class="ai-badge">½Å±Ô</span>
-      <span class="sub">ÅÇÀ» ´­·¯ °¢ ±â´ÉÀ» Á÷Á¢ Ã¼ÇèÇØ º¸¼¼¿ä</span>
+      <h2>AI í–‰ì • ì§€ì› ê¸°ëŠ¥</h2>
+      <span class="ai-badge">ì‹ ê·œ</span>
+      <span class="sub">íƒ­ì„ ëˆŒëŸ¬ ê° ê¸°ëŠ¥ì„ ì§ì ‘ ì²´í—˜í•´ ë³´ì„¸ìš”</span>
     </div>
     <div class="feature-shell ai-feature">
       <div class="tabs" role="tablist">
-        <button role="tab" aria-selected="true" data-panel="p-summary">°í½Ã¡¤°ø°í AI ¿ä¾à</button>
-        <button role="tab" aria-selected="false" data-panel="p-review">¹Î¿ø AI »çÀüÁ¢¼ö µµ¿ì¹Ì</button>
-        <button role="tab" aria-selected="false" data-panel="p-match">³»°Ô ¸Â´Â Áö¿ø»ç¾÷ ¸ÅÄª</button>
+        <button role="tab" aria-selected="true" data-panel="p-summary">ê³ ì‹œÂ·ê³µê³  AI ìš”ì•½</button>
+        <button role="tab" aria-selected="false" data-panel="p-review">ë¯¼ì› AI ì‚¬ì „ì ‘ìˆ˜ ë„ìš°ë¯¸</button>
+        <button role="tab" aria-selected="false" data-panel="p-match">ë‚´ê²Œ ë§žëŠ” ì§€ì›ì‚¬ì—… ë§¤ì¹­</button>
       </div>
 
-      <!-- °í½Ã°ø°í ¿ä¾à -->
+      <!-- ê³ ì‹œê³µê³  ìš”ì•½ -->
       <div class="panel active" id="p-summary" role="tabpanel">
         <div class="rec-list">
           <button class="rec" data-sum="s1" aria-expanded="false">
             <span class="date">2026.09.21</span>
-            <span class="title">ÇÑ³²µ¿ ¡Û±¸¿ª ÀçÁ¤ºñÃËÁø°èÈ¹ º¯°æ(¾È) ÁÖ¹Î °ø¶÷ °ø°í</span>
-            <span class="go">AI ¿ä¾à º¸±â ?</span>
+            <span class="title">í•œë‚¨ë™ â—‹êµ¬ì—­ ìž¬ì •ë¹„ì´‰ì§„ê³„íš ë³€ê²½(ì•ˆ) ì£¼ë¯¼ ê³µëžŒ ê³µê³ </span>
+            <span class="go">AI ìš”ì•½ ë³´ê¸° ?</span>
           </button>
           <div class="summary" id="s1">
-            <h4><span class="ai-badge">AI 3ÁÙ ¿ä¾à</span> »ý¼º ¼Ò¿ä 1.1ÃÊ ¡¤ ¿ø¹® 34¸é (µµ¸é Æ÷ÇÔ)</h4>
+            <h4><span class="ai-badge">AI 3ì¤„ ìš”ì•½</span> ìƒì„± ì†Œìš” 1.1ì´ˆ Â· ì›ë¬¸ 34ë©´ (ë„ë©´ í¬í•¨)</h4>
             <ul>
-              <li>º¯°æ ÇÙ½ÉÀº <b>°ø°øº¸ÇàÅë·Î ½Å¼³</b>°ú È¹Áö ÀÏºÎÀÇ ¿ëÀû·ü Á¶Á¤ ? ¼¼´ë¼ö º¯µ¿Àº ¾ø½À´Ï´Ù.</li>
-              <li>°ø¶÷ ±â°£Àº 9.21~10.5(14ÀÏ°£), ÀÇ°ß¼­´Â ÀçÁ¤ºñ»ç¾÷°ú ¹æ¹®¡¤¿ìÆí¡¤È¨ÆäÀÌÁö Á¦Ãâ ¸ðµÎ °¡´ÉÇÕ´Ï´Ù.</li>
-              <li>³» °ÅÁÖÁö°¡ °ø¶÷ ´ë»ó ±¸¿ª¿¡ Æ÷ÇÔµÇ´ÂÁö´Â Ã·ºÎ µµ¸é 3¸é¿¡¼­ È®ÀÎÇÒ ¼ö ÀÖ½À´Ï´Ù.</li>
+              <li>ë³€ê²½ í•µì‹¬ì€ <b>ê³µê³µë³´í–‰í†µë¡œ ì‹ ì„¤</b>ê³¼ íšì§€ ì¼ë¶€ì˜ ìš©ì ë¥  ì¡°ì • ? ì„¸ëŒ€ìˆ˜ ë³€ë™ì€ ì—†ìŠµë‹ˆë‹¤.</li>
+              <li>ê³µëžŒ ê¸°ê°„ì€ 9.21~10.5(14ì¼ê°„), ì˜ê²¬ì„œëŠ” ìž¬ì •ë¹„ì‚¬ì—…ê³¼ ë°©ë¬¸Â·ìš°íŽ¸Â·í™ˆíŽ˜ì´ì§€ ì œì¶œ ëª¨ë‘ ê°€ëŠ¥í•©ë‹ˆë‹¤.</li>
+              <li>ë‚´ ê±°ì£¼ì§€ê°€ ê³µëžŒ ëŒ€ìƒ êµ¬ì—­ì— í¬í•¨ë˜ëŠ”ì§€ëŠ” ì²¨ë¶€ ë„ë©´ 3ë©´ì—ì„œ í™•ì¸í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</li>
             </ul>
-            <div class="kw-row"><span class="kw">#ÇÑ³²µ¿</span><span class="kw">#ÀçÁ¤ºñÃËÁø</span><span class="kw">#ÁÖ¹Î°ø¶÷</span><span class="kw">#ÀÇ°ßÁ¦Ãâ D-7</span></div>
+            <div class="kw-row"><span class="kw">#í•œë‚¨ë™</span><span class="kw">#ìž¬ì •ë¹„ì´‰ì§„</span><span class="kw">#ì£¼ë¯¼ê³µëžŒ</span><span class="kw">#ì˜ê²¬ì œì¶œ D-7</span></div>
           </div>
 
           <button class="rec" data-sum="s2" aria-expanded="false">
             <span class="date">2026.09.14</span>
-            <span class="title">¿ë»ê±¹Á¦¾÷¹«Áö±¸ Á¶¼º °ø»ç °ü·Ã ±³Åë¼ÒÅë´ëÃ¥ °ø°í</span>
-            <span class="go">AI ¿ä¾à º¸±â ?</span>
+            <span class="title">ìš©ì‚°êµ­ì œì—…ë¬´ì§€êµ¬ ì¡°ì„± ê³µì‚¬ ê´€ë ¨ êµí†µì†Œí†µëŒ€ì±… ê³µê³ </span>
+            <span class="go">AI ìš”ì•½ ë³´ê¸° ?</span>
           </button>
           <div class="summary" id="s2">
-            <h4><span class="ai-badge">AI 3ÁÙ ¿ä¾à</span> »ý¼º ¼Ò¿ä 1.0ÃÊ ¡¤ ¿ø¹® 22¸é</h4>
+            <h4><span class="ai-badge">AI 3ì¤„ ìš”ì•½</span> ìƒì„± ì†Œìš” 1.0ì´ˆ Â· ì›ë¬¸ 22ë©´</h4>
             <ul>
-              <li>°ø»ç ±â°£ Áß ÇÑ°­´ë·Î ÀÏºÎ ±¸°£ <b>Â÷·Î Ãà¼Ò</b> ? 10¿ùºÎÅÍ ¼øÂ÷ Àû¿ëµË´Ï´Ù.</li>
-              <li>¸¶À»¹ö½º 2°³ ³ë¼± ¿ìÈ¸ ¿îÇà, ÀÓ½Ã Á¤·ùÀå À§Ä¡´Â Ã·ºÎ ¾àµµ ÂüÁ¶.</li>
-              <li>ÀÌÃÌµ¿¡¤ÇÑ°­·Îµ¿ ¹æ¸é ¿ìÈ¸ °æ·Î¿Í °ø»ç ¹Î¿ø Àü¿ë ¿¬¶ôÃ³°¡ ¾È³»µÇ¾î ÀÖ½À´Ï´Ù.</li>
+              <li>ê³µì‚¬ ê¸°ê°„ ì¤‘ í•œê°•ëŒ€ë¡œ ì¼ë¶€ êµ¬ê°„ <b>ì°¨ë¡œ ì¶•ì†Œ</b> ? 10ì›”ë¶€í„° ìˆœì°¨ ì ìš©ë©ë‹ˆë‹¤.</li>
+              <li>ë§ˆì„ë²„ìŠ¤ 2ê°œ ë…¸ì„  ìš°íšŒ ìš´í–‰, ìž„ì‹œ ì •ë¥˜ìž¥ ìœ„ì¹˜ëŠ” ì²¨ë¶€ ì•½ë„ ì°¸ì¡°.</li>
+              <li>ì´ì´Œë™Â·í•œê°•ë¡œë™ ë°©ë©´ ìš°íšŒ ê²½ë¡œì™€ ê³µì‚¬ ë¯¼ì› ì „ìš© ì—°ë½ì²˜ê°€ ì•ˆë‚´ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.</li>
             </ul>
-            <div class="kw-row"><span class="kw">#±¹Á¦¾÷¹«Áö±¸</span><span class="kw">#ÇÑ°­´ë·Î</span><span class="kw">#±³ÅëÅëÁ¦</span></div>
+            <div class="kw-row"><span class="kw">#êµ­ì œì—…ë¬´ì§€êµ¬</span><span class="kw">#í•œê°•ëŒ€ë¡œ</span><span class="kw">#êµí†µí†µì œ</span></div>
           </div>
 
           <button class="rec" data-sum="s3" aria-expanded="false">
             <span class="date">2026.09.07</span>
-            <span class="title">2026³â ÇÏ¹Ý±â Ã»³â ¿ù¼¼ ÇÑ½Ã Áö¿ø»ç¾÷ °ø°í</span>
-            <span class="go">AI ¿ä¾à º¸±â ?</span>
+            <span class="title">2026ë…„ í•˜ë°˜ê¸° ì²­ë…„ ì›”ì„¸ í•œì‹œ ì§€ì›ì‚¬ì—… ê³µê³ </span>
+            <span class="go">AI ìš”ì•½ ë³´ê¸° ?</span>
           </button>
           <div class="summary" id="s3">
-            <h4><span class="ai-badge">AI 3ÁÙ ¿ä¾à</span> »ý¼º ¼Ò¿ä 0.8ÃÊ ¡¤ ¿ø¹® 12¸é</h4>
+            <h4><span class="ai-badge">AI 3ì¤„ ìš”ì•½</span> ìƒì„± ì†Œìš” 0.8ì´ˆ Â· ì›ë¬¸ 12ë©´</h4>
             <ul>
-              <li>Áö¿ø ´ë»ó: °ü³» °ÅÁÖ 19~39¼¼ ¹«ÁÖÅÃ Ã»³â, ¿ù¼¼ 70¸¸ ¿ø ÀÌÇÏ °ÅÁÖÀÚ (¼Òµæ ±âÁØ º°µµ).</li>
-              <li>Áö¿ø ³»¿ë: ¿ù ÃÖ´ë 20¸¸ ¿ø, ÃÖÀå 12°³¿ù ? ½ÅÃ»Àº 10.1~10.31 ¿Â¶óÀÎ Á¢¼ö.</li>
-              <li>Áßº¹ ºÒ°¡: ±¹ÅäºÎ Ã»³â¿ù¼¼Áö¿ø ¼ö±Þ ÁßÀÎ °æ¿ì ½ÅÃ»ÇÒ ¼ö ¾ø½À´Ï´Ù.</li>
+              <li>ì§€ì› ëŒ€ìƒ: ê´€ë‚´ ê±°ì£¼ 19~39ì„¸ ë¬´ì£¼íƒ ì²­ë…„, ì›”ì„¸ 70ë§Œ ì› ì´í•˜ ê±°ì£¼ìž (ì†Œë“ ê¸°ì¤€ ë³„ë„).</li>
+              <li>ì§€ì› ë‚´ìš©: ì›” ìµœëŒ€ 20ë§Œ ì›, ìµœìž¥ 12ê°œì›” ? ì‹ ì²­ì€ 10.1~10.31 ì˜¨ë¼ì¸ ì ‘ìˆ˜.</li>
+              <li>ì¤‘ë³µ ë¶ˆê°€: êµ­í† ë¶€ ì²­ë…„ì›”ì„¸ì§€ì› ìˆ˜ê¸‰ ì¤‘ì¸ ê²½ìš° ì‹ ì²­í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.</li>
             </ul>
-            <div class="kw-row"><span class="kw">#Ã»³â¿ù¼¼</span><span class="kw">#ÈÄ¾Ïµ¿¡¤ÇØ¹æÃÌ</span><span class="kw">#10¿ùÁ¢¼ö</span></div>
+            <div class="kw-row"><span class="kw">#ì²­ë…„ì›”ì„¸</span><span class="kw">#í›„ì•”ë™Â·í•´ë°©ì´Œ</span><span class="kw">#10ì›”ì ‘ìˆ˜</span></div>
           </div>
         </div>
       </div>
 
-      <!-- ¹Î¿ø »çÀüÁ¢¼ö µµ¿ì¹Ì -->
+      <!-- ë¯¼ì› ì‚¬ì „ì ‘ìˆ˜ ë„ìš°ë¯¸ -->
       <div class="panel" id="p-review" role="tabpanel">
         <div class="review-grid">
           <div>
-            <textarea id="minwonInput" aria-label="¹Î¿ø ³»¿ë ÀÔ·Â">ÇØ¹æÃÌ ÂÊ °æ»çÁø °ñ¸ñ °¡·ÎµîÀÌ ÀÏÁÖÀÏÂ° ²¨Á® ÀÖ¾î¿ä. ¹ã¿¡ ±æÀÌ ³Ê¹« ¾îµÎ¿ö¼­ Åð±Ù±æÀÌ ¹«¼·½À´Ï´Ù. »¡¸® °íÃÄÁÖ½Ã°í, °¡´ÉÇÏ¸é CCTVµµ Ãß°¡·Î ¼³Ä¡ÇØ ÁÖ¼ÌÀ¸¸é ÇÕ´Ï´Ù.</textarea>
-            <button class="check-btn" id="checkBtn">AI »çÀüºÐ¼® ½ÇÇà</button>
+            <textarea id="minwonInput" aria-label="ë¯¼ì› ë‚´ìš© ìž…ë ¥">í•´ë°©ì´Œ ìª½ ê²½ì‚¬ì§„ ê³¨ëª© ê°€ë¡œë“±ì´ ì¼ì£¼ì¼ì§¸ êº¼ì ¸ ìžˆì–´ìš”. ë°¤ì— ê¸¸ì´ ë„ˆë¬´ ì–´ë‘ì›Œì„œ í‡´ê·¼ê¸¸ì´ ë¬´ì„­ìŠµë‹ˆë‹¤. ë¹¨ë¦¬ ê³ ì³ì£¼ì‹œê³ , ê°€ëŠ¥í•˜ë©´ CCTVë„ ì¶”ê°€ë¡œ ì„¤ì¹˜í•´ ì£¼ì…¨ìœ¼ë©´ í•©ë‹ˆë‹¤.</textarea>
+            <button class="check-btn" id="checkBtn">AI ì‚¬ì „ë¶„ì„ ì‹¤í–‰</button>
           </div>
           <div class="result-box" id="resultBox">
-            <div class="placeholder" id="resultPh">ÁÂÃø¿¡ ¹Î¿ø ³»¿ëÀ» ÀÔ·ÂÇÏ°í [AI »çÀüºÐ¼® ½ÇÇà]À» ´©¸£¸é<br>¼Ò°ü ºÎ¼­¡¤Ã³¸® ÀýÂ÷¡¤À¯»ç Ã³¸® »ç·Ê°¡ Ç¥½ÃµË´Ï´Ù.</div>
-            <div class="spinner" id="spinner">? ¹Î¿øÆí¶÷ 1,800°Ç ¡¤ ÃÖ±Ù Ã³¸®»ç·Ê ´ëÁ¶ Áß¡¦</div>
+            <div class="placeholder" id="resultPh">ì¢Œì¸¡ì— ë¯¼ì› ë‚´ìš©ì„ ìž…ë ¥í•˜ê³  [AI ì‚¬ì „ë¶„ì„ ì‹¤í–‰]ì„ ëˆ„ë¥´ë©´<br>ì†Œê´€ ë¶€ì„œÂ·ì²˜ë¦¬ ì ˆì°¨Â·ìœ ì‚¬ ì²˜ë¦¬ ì‚¬ë¡€ê°€ í‘œì‹œë©ë‹ˆë‹¤.</div>
+            <div class="spinner" id="spinner">? ë¯¼ì›íŽ¸ëžŒ 1,800ê±´ Â· ìµœê·¼ ì²˜ë¦¬ì‚¬ë¡€ ëŒ€ì¡° ì¤‘â€¦</div>
             <div id="resultList"></div>
           </div>
         </div>
       </div>
 
-      <!-- Áö¿ø»ç¾÷ ¸ÅÄª -->
+      <!-- ì§€ì›ì‚¬ì—… ë§¤ì¹­ -->
       <div class="panel" id="p-match" role="tabpanel">
         <div class="match-top">
-          <label for="matchSel" style="font-weight:700;font-size:.9rem">³ªÀÇ »óÈ² ¼±ÅÃ</label>
+          <label for="matchSel" style="font-weight:700;font-size:.9rem">ë‚˜ì˜ ìƒí™© ì„ íƒ</label>
           <select id="matchSel">
-            <option value="">? ÇØ´çµÇ´Â »óÈ²À» ¼±ÅÃÇÏ¼¼¿ä ?</option>
-            <option value="g1">Ã»ÆÄµ¿ °ÅÁÖ Ãë¾÷ÁØºñ Ã»³â (20´ë)</option>
-            <option value="g2">ÀÌÅÂ¿ø °ÅÁÖ ¿Ü±¹ÀÎ ÁÖ¹Î °¡Á¤</option>
-            <option value="g3">È¦·Î °ÅÁÖÇÏ½Ã´Â ¾î¸£½Å</option>
+            <option value="">? í•´ë‹¹ë˜ëŠ” ìƒí™©ì„ ì„ íƒí•˜ì„¸ìš” ?</option>
+            <option value="g1">ì²­íŒŒë™ ê±°ì£¼ ì·¨ì—…ì¤€ë¹„ ì²­ë…„ (20ëŒ€)</option>
+            <option value="g2">ì´íƒœì› ê±°ì£¼ ì™¸êµ­ì¸ ì£¼ë¯¼ ê°€ì •</option>
+            <option value="g3">í™€ë¡œ ê±°ì£¼í•˜ì‹œëŠ” ì–´ë¥´ì‹ </option>
           </select>
-          <span class="ai-badge">ÀÚ°Ý¿ä°Ç ÀÚµ¿ ´ëÁ¶</span>
+          <span class="ai-badge">ìžê²©ìš”ê±´ ìžë™ ëŒ€ì¡°</span>
         </div>
 
         <div class="match-set" id="g1">
           <div class="match-card">
-            <div class="pct">ÀûÇÕµµ 95%</div>
-            <h4>Ã»³â ¿ù¼¼ ÇÑ½Ã Áö¿ø</h4>
-            <p>¿ù ÃÖ´ë 20¸¸ ¿ø ¡¤ ÃÖÀå 12°³¿ù ¡¤ 10.1~10.31 Á¢¼ö</p>
-            <div class="why"><b>¸ÅÄª ±Ù°Å</b> ? ¿¬·É¡¤°ÅÁÖÁö ¿ä°Ç ÃæÁ·. ¼Òµæ ±âÁØ(ÁßÀ§ 150% ÀÌÇÏ)¸¸ È®ÀÎÇÏ¸é µË´Ï´Ù.</div>
+            <div class="pct">ì í•©ë„ 95%</div>
+            <h4>ì²­ë…„ ì›”ì„¸ í•œì‹œ ì§€ì›</h4>
+            <p>ì›” ìµœëŒ€ 20ë§Œ ì› Â· ìµœìž¥ 12ê°œì›” Â· 10.1~10.31 ì ‘ìˆ˜</p>
+            <div class="why"><b>ë§¤ì¹­ ê·¼ê±°</b> ? ì—°ë ¹Â·ê±°ì£¼ì§€ ìš”ê±´ ì¶©ì¡±. ì†Œë“ ê¸°ì¤€(ì¤‘ìœ„ 150% ì´í•˜)ë§Œ í™•ì¸í•˜ë©´ ë©ë‹ˆë‹¤.</div>
           </div>
           <div class="match-card">
-            <div class="pct">ÀûÇÕµµ 88%</div>
-            <h4>Ãë¾÷ÁØºñ Ã»³â ÀÚ°ÝÁõ ÀÀ½Ã·á Áö¿ø</h4>
-            <p>¿¬ ÃÖ´ë 10¸¸ ¿ø ¡¤ »ó½Ã Á¢¼ö ¡¤ ±¹°¡±â¼úÀÚ°Ý ´ë»ó</p>
-            <div class="why"><b>¸ÅÄª ±Ù°Å</b> ? Ãë¾÷ÁØºñ »óÅÂ ÇØ´ç. ¿ÃÇØ ÀÜ¿© ¿¹»ê ¼ÒÁø Àü ½ÅÃ» ±ÇÀå.</div>
+            <div class="pct">ì í•©ë„ 88%</div>
+            <h4>ì·¨ì—…ì¤€ë¹„ ì²­ë…„ ìžê²©ì¦ ì‘ì‹œë£Œ ì§€ì›</h4>
+            <p>ì—° ìµœëŒ€ 10ë§Œ ì› Â· ìƒì‹œ ì ‘ìˆ˜ Â· êµ­ê°€ê¸°ìˆ ìžê²© ëŒ€ìƒ</p>
+            <div class="why"><b>ë§¤ì¹­ ê·¼ê±°</b> ? ì·¨ì—…ì¤€ë¹„ ìƒíƒœ í•´ë‹¹. ì˜¬í•´ ìž”ì—¬ ì˜ˆì‚° ì†Œì§„ ì „ ì‹ ì²­ ê¶Œìž¥.</div>
           </div>
         </div>
 
         <div class="match-set" id="g2">
           <div class="match-card">
-            <div class="pct">ÀûÇÕµµ 94%</div>
-            <h4>¿Ü±¹ÀÎ ÁÖ¹Î »ýÈ°Á¤Âø Áö¿ø</h4>
-            <p>ÇÑ±¹¾î ±³À° ¡¤ »ýÈ° »ó´ã ¡¤ ±Û·Î¹úºô¸®Áö¼¾ÅÍ ÇÁ·Î±×·¥</p>
-            <div class="why"><b>¸ÅÄª ±Ù°Å</b> ? °ÅÁÖ µ¿ ±âÁØ µµº¸±Ç¿¡ ±Û·Î¹úºô¸®Áö¼¾ÅÍ°¡ ÀÖ¾î ´ë¸é »ó´ã ¿¬°è°¡ °¡´ÉÇÕ´Ï´Ù.</div>
+            <div class="pct">ì í•©ë„ 94%</div>
+            <h4>ì™¸êµ­ì¸ ì£¼ë¯¼ ìƒí™œì •ì°© ì§€ì›</h4>
+            <p>í•œêµ­ì–´ êµìœ¡ Â· ìƒí™œ ìƒë‹´ Â· ê¸€ë¡œë²Œë¹Œë¦¬ì§€ì„¼í„° í”„ë¡œê·¸ëž¨</p>
+            <div class="why"><b>ë§¤ì¹­ ê·¼ê±°</b> ? ê±°ì£¼ ë™ ê¸°ì¤€ ë„ë³´ê¶Œì— ê¸€ë¡œë²Œë¹Œë¦¬ì§€ì„¼í„°ê°€ ìžˆì–´ ëŒ€ë©´ ìƒë‹´ ì—°ê³„ê°€ ê°€ëŠ¥í•©ë‹ˆë‹¤.</div>
           </div>
           <div class="match-card">
-            <div class="pct">ÀûÇÕµµ 87%</div>
-            <h4>´Ù¹®È­¡¤¿Ü±¹ÀÎ °¡Á¤ ÀÚ³à ±³À° Áö¿ø</h4>
-            <p>ÀÌÁß¾ð¾î ÇÐ½À Áö¿ø ¡¤ ÇÐ±³»ýÈ° ÀûÀÀ ÇÁ·Î±×·¥</p>
-            <div class="why"><b>¸ÅÄª ±Ù°Å</b> ? ÀÚ³à ¿¬·É ¿ä°Ç ÃæÁ·. ½ÅÃ» ¾È³»¸¦ ¿µ¾î µî 7°³ ±¹¾î·Î ¹Þ¾Æº¼ ¼ö ÀÖ½À´Ï´Ù.</div>
+            <div class="pct">ì í•©ë„ 87%</div>
+            <h4>ë‹¤ë¬¸í™”Â·ì™¸êµ­ì¸ ê°€ì • ìžë…€ êµìœ¡ ì§€ì›</h4>
+            <p>ì´ì¤‘ì–¸ì–´ í•™ìŠµ ì§€ì› Â· í•™êµìƒí™œ ì ì‘ í”„ë¡œê·¸ëž¨</p>
+            <div class="why"><b>ë§¤ì¹­ ê·¼ê±°</b> ? ìžë…€ ì—°ë ¹ ìš”ê±´ ì¶©ì¡±. ì‹ ì²­ ì•ˆë‚´ë¥¼ ì˜ì–´ ë“± 7ê°œ êµ­ì–´ë¡œ ë°›ì•„ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</div>
           </div>
         </div>
 
         <div class="match-set" id="g3">
           <div class="match-card">
-            <div class="pct">ÀûÇÕµµ 96%</div>
-            <h4>½º¸¶Æ®ÇÃ·¯±× ¾ÈºÎÈ®ÀÎ ¼­ºñ½º</h4>
-            <p>1ÀÎ°¡±¸ ¾î¸£½Å ´ë»ó ¡¤ Àü·Â »ç¿ë ÆÐÅÏ ±â¹Ý ¾ÈºÎ È®ÀÎ</p>
-            <div class="why"><b>¸ÅÄª ±Ù°Å</b> ? 1ÀÎ°¡±¸¡¤¿¬·É ¿ä°Ç ÃæÁ·. µ¿ÁÖ¹Î¼¾ÅÍ ¹æ¹® ¾øÀÌ ÀüÈ­ ½ÅÃ» °¡´ÉÇÕ´Ï´Ù.</div>
+            <div class="pct">ì í•©ë„ 96%</div>
+            <h4>ìŠ¤ë§ˆíŠ¸í”ŒëŸ¬ê·¸ ì•ˆë¶€í™•ì¸ ì„œë¹„ìŠ¤</h4>
+            <p>1ì¸ê°€êµ¬ ì–´ë¥´ì‹  ëŒ€ìƒ Â· ì „ë ¥ ì‚¬ìš© íŒ¨í„´ ê¸°ë°˜ ì•ˆë¶€ í™•ì¸</p>
+            <div class="why"><b>ë§¤ì¹­ ê·¼ê±°</b> ? 1ì¸ê°€êµ¬Â·ì—°ë ¹ ìš”ê±´ ì¶©ì¡±. ë™ì£¼ë¯¼ì„¼í„° ë°©ë¬¸ ì—†ì´ ì „í™” ì‹ ì²­ ê°€ëŠ¥í•©ë‹ˆë‹¤.</div>
           </div>
           <div class="match-card">
-            <div class="pct">ÀûÇÕµµ 89%</div>
-            <h4>¾î¸£½Å ¹«¸­°üÀý ¼ö¼úºñ Áö¿ø</h4>
-            <p>¸¸ 60¼¼ ÀÌ»ó ¡¤ ¼Òµæ ±âÁØ ÃæÁ· ½Ã °Ë»ç¡¤¼ö¼úºñ Áö¿ø</p>
-            <div class="why"><b>¸ÅÄª ±Ù°Å</b> ? ¿¬·É ¿ä°Ç ÃæÁ·. º¸°Ç¼Ò »çÀü °ËÁø ¿¹¾àÀ» ÇÔ²² ¾È³»ÇØ µå¸³´Ï´Ù.</div>
+            <div class="pct">ì í•©ë„ 89%</div>
+            <h4>ì–´ë¥´ì‹  ë¬´ë¦Žê´€ì ˆ ìˆ˜ìˆ ë¹„ ì§€ì›</h4>
+            <p>ë§Œ 60ì„¸ ì´ìƒ Â· ì†Œë“ ê¸°ì¤€ ì¶©ì¡± ì‹œ ê²€ì‚¬Â·ìˆ˜ìˆ ë¹„ ì§€ì›</p>
+            <div class="why"><b>ë§¤ì¹­ ê·¼ê±°</b> ? ì—°ë ¹ ìš”ê±´ ì¶©ì¡±. ë³´ê±´ì†Œ ì‚¬ì „ ê²€ì§„ ì˜ˆì•½ì„ í•¨ê»˜ ì•ˆë‚´í•´ ë“œë¦½ë‹ˆë‹¤.</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ±¸¹Î Ãªº¿ -->
+  <!-- êµ¬ë¯¼ ì±—ë´‡ -->
   <section class="section">
     <div class="section-head">
-      <h2>±¸¹Î ¹Î¿ø AI µµ¿ì¹Ì</h2>
-      <span class="ai-badge">½Å±Ô</span>
+      <h2>êµ¬ë¯¼ ë¯¼ì› AI ë„ìš°ë¯¸</h2>
+      <span class="ai-badge">ì‹ ê·œ</span>
     </div>
     <div class="civic">
       <div class="civic-copy">
-        <h3>¾î´À ºÎ¼­¿¡ ¹°¾î¾ß ÇÒÁö ¸ô¶óµµ, AI°¡ ¸ÕÀú ¾È³»ÇÕ´Ï´Ù</h3>
-        <p>´ëÇ¥ÀüÈ­ ¿¬°á°ú ºÎ¼­ µ¹·Á¸·±â ¾øÀÌ, ¹Î¿øÀÇ ¼Ò°ü ºÎ¼­¡¤ÇÊ¿ä ¼­·ù¡¤Ã³¸® ÀýÂ÷¸¦ 24½Ã°£ ? ¿Ü±¹ÀÎ ÁÖ¹Î¿¡°Ô´Â ¸ð±¹¾î·Î ? ¾È³»ÇÕ´Ï´Ù.</p>
+        <h3>ì–´ëŠ ë¶€ì„œì— ë¬¼ì–´ì•¼ í• ì§€ ëª°ë¼ë„, AIê°€ ë¨¼ì € ì•ˆë‚´í•©ë‹ˆë‹¤</h3>
+        <p>ëŒ€í‘œì „í™” ì—°ê²°ê³¼ ë¶€ì„œ ëŒë ¤ë§‰ê¸° ì—†ì´, ë¯¼ì›ì˜ ì†Œê´€ ë¶€ì„œÂ·í•„ìš” ì„œë¥˜Â·ì²˜ë¦¬ ì ˆì°¨ë¥¼ 24ì‹œê°„ ? ì™¸êµ­ì¸ ì£¼ë¯¼ì—ê²ŒëŠ” ëª¨êµ­ì–´ë¡œ ? ì•ˆë‚´í•©ë‹ˆë‹¤.</p>
         <ul>
-          <li>¹Î¿ø ³»¿ë ºÐ¼® ¡æ <b>¼Ò°ü ºÎ¼­ ÀÚµ¿ ºÐ·ù</b> ¹× ´ã´ç ¿¬¶ôÃ³ ¾È³»</li>
-          <li>À¯»ç ¹Î¿ø Ã³¸® »ç·Ê¡¤Æò±Õ Ã³¸® ±â°£ ¾È³»·Î Áßº¹ ¹®ÀÇ ¿¹¹æ</li>
-          <li>Áõ¸í¼­ ¹ß±Þ¡¤½Å°í ÀýÂ÷ÀÇ <b>ÇÊ¿ä ¼­·ù »çÀü Ã¼Å©</b></li>
-          <li>±âÁ¸ 7°³ ±¹¾î ´©¸®Áý°ú ¿¬°èÇÑ <b>´Ù±¹¾î ÁúÀÇÀÀ´ä</b> ? Á¤Àû ¹ø¿ªÀ» ³Ñ¾î °³º° Áú¹®¿¡ ´äº¯</li>
+          <li>ë¯¼ì› ë‚´ìš© ë¶„ì„ â†’ <b>ì†Œê´€ ë¶€ì„œ ìžë™ ë¶„ë¥˜</b> ë° ë‹´ë‹¹ ì—°ë½ì²˜ ì•ˆë‚´</li>
+          <li>ìœ ì‚¬ ë¯¼ì› ì²˜ë¦¬ ì‚¬ë¡€Â·í‰ê·  ì²˜ë¦¬ ê¸°ê°„ ì•ˆë‚´ë¡œ ì¤‘ë³µ ë¬¸ì˜ ì˜ˆë°©</li>
+          <li>ì¦ëª…ì„œ ë°œê¸‰Â·ì‹ ê³  ì ˆì°¨ì˜ <b>í•„ìš” ì„œë¥˜ ì‚¬ì „ ì²´í¬</b></li>
+          <li>ê¸°ì¡´ 7ê°œ êµ­ì–´ ëˆ„ë¦¬ì§‘ê³¼ ì—°ê³„í•œ <b>ë‹¤êµ­ì–´ ì§ˆì˜ì‘ë‹µ</b> ? ì •ì  ë²ˆì—­ì„ ë„˜ì–´ ê°œë³„ ì§ˆë¬¸ì— ë‹µë³€</li>
         </ul>
       </div>
       <div class="chat ai-feature">
-        <div class="chat-head">¿ë»ê±¸Ã» AI ±¸Á¤µµ¿ì¹Ì</div>
+        <div class="chat-head">ìš©ì‚°êµ¬ì²­ AI êµ¬ì •ë„ìš°ë¯¸</div>
         <div class="chat-log" id="chatLog">
-          <div class="msg bot">¾È³çÇÏ¼¼¿ä! ±Ã±ÝÇÑ ¹Î¿øÀÌ³ª ±¸Á¤ Á¤º¸¸¦ ¾Ë·ÁÁÖ½Ã¸é ÀýÂ÷¸¦ ¾È³»ÇØ µå¸±°Ô¿ä. ¾Æ·¡ ¿¹½Ã¸¦ ´­·¯ ½Ã¿¬ÇØ º¸¼¼¿ä.</div>
+          <div class="msg bot">ì•ˆë…•í•˜ì„¸ìš”! ê¶ê¸ˆí•œ ë¯¼ì›ì´ë‚˜ êµ¬ì • ì •ë³´ë¥¼ ì•Œë ¤ì£¼ì‹œë©´ ì ˆì°¨ë¥¼ ì•ˆë‚´í•´ ë“œë¦´ê²Œìš”. ì•„ëž˜ ì˜ˆì‹œë¥¼ ëˆŒëŸ¬ ì‹œì—°í•´ ë³´ì„¸ìš”.</div>
         </div>
         <div class="chat-actions">
-          <button id="demoChat1">¿¹½Ã: ÀÌÅÂ¿ø ºÒ¹ýÁÖÁ¤Â÷ ½Å°í</button>
-          <button id="demoChat2">¿¹½Ã: ÀüÀÔ½Å°í ÀýÂ÷</button>
+          <button id="demoChat1">ì˜ˆì‹œ: ì´íƒœì› ë¶ˆë²•ì£¼ì •ì°¨ ì‹ ê³ </button>
+          <button id="demoChat2">ì˜ˆì‹œ: ì „ìž…ì‹ ê³  ì ˆì°¨</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- µµÀÔ È¿°ú -->
+  <!-- ë„ìž… íš¨ê³¼ -->
   <section class="section">
-    <div class="section-head"><h2>±â´ë È¿°ú</h2></div>
+    <div class="section-head"><h2>ê¸°ëŒ€ íš¨ê³¼</h2></div>
     <div class="value-grid">
-      <div class="value"><div class="num">34¸é ¡æ 3ÁÙ</div><h4>°í½Ã°ø°í Á¢±Ù¼º</h4><p>ÇÑ³² ÀçÁ¤ºñ °ø¶÷ µî ¹æ´ëÇÑ °ø°í¹®À» Áï½Ã ¿ä¾àÇØ ÁÖ¹Î Á¤º¸ °ÝÂ÷¸¦ ÁÙÀÔ´Ï´Ù.</p></div>
-      <div class="value"><div class="num">24½Ã°£</div><h4>¹Î¿ø ÃÊ±â ¾È³»</h4><p>¼Ò°ü ºÎ¼­ ºÐ·ù¿Í ÀýÂ÷ ¾È³»¸¦ »ó½Ã Á¦°øÇØ ´ëÇ¥ÀüÈ­¡¤ºÎ¼­ ´Ü¼ø ¹®ÀÇ¸¦ ÁÙÀÔ´Ï´Ù.</p></div>
-      <div class="value"><div class="num">7°³ ±¹¾î</div><h4>±¹Á¦µµ½Ã ÇàÁ¤</h4><p>¿Ü±¹¾î ´©¸®ÁýÀÇ Á¤Àû ¹ø¿ªÀ» ³Ñ¾î, ¿Ü±¹ÀÎ ÁÖ¹ÎÀÇ °³º° Áú¹®¿¡ ¸ð±¹¾î·Î ´äÇÕ´Ï´Ù.</p></div>
-      <div class="value"><div class="num">¿ÂÇÁ·¹¹Ì½º</div><h4>µ¥ÀÌÅÍ ÁÖ±Ç</h4><p>±¸Ã» ³»ºÎ¸Á¿¡ ±¸ÃàÇÏ´Â ¼Ò¹ö¸° AI·Î, ÁÖ¹Î µ¥ÀÌÅÍ°¡ ¿ÜºÎ·Î ³ª°¡Áö ¾Ê½À´Ï´Ù.</p></div>
+      <div class="value"><div class="num">34ë©´ â†’ 3ì¤„</div><h4>ê³ ì‹œê³µê³  ì ‘ê·¼ì„±</h4><p>í•œë‚¨ ìž¬ì •ë¹„ ê³µëžŒ ë“± ë°©ëŒ€í•œ ê³µê³ ë¬¸ì„ ì¦‰ì‹œ ìš”ì•½í•´ ì£¼ë¯¼ ì •ë³´ ê²©ì°¨ë¥¼ ì¤„ìž…ë‹ˆë‹¤.</p></div>
+      <div class="value"><div class="num">24ì‹œê°„</div><h4>ë¯¼ì› ì´ˆê¸° ì•ˆë‚´</h4><p>ì†Œê´€ ë¶€ì„œ ë¶„ë¥˜ì™€ ì ˆì°¨ ì•ˆë‚´ë¥¼ ìƒì‹œ ì œê³µí•´ ëŒ€í‘œì „í™”Â·ë¶€ì„œ ë‹¨ìˆœ ë¬¸ì˜ë¥¼ ì¤„ìž…ë‹ˆë‹¤.</p></div>
+      <div class="value"><div class="num">7ê°œ êµ­ì–´</div><h4>êµ­ì œë„ì‹œ í–‰ì •</h4><p>ì™¸êµ­ì–´ ëˆ„ë¦¬ì§‘ì˜ ì •ì  ë²ˆì—­ì„ ë„˜ì–´, ì™¸êµ­ì¸ ì£¼ë¯¼ì˜ ê°œë³„ ì§ˆë¬¸ì— ëª¨êµ­ì–´ë¡œ ë‹µí•©ë‹ˆë‹¤.</p></div>
+      <div class="value"><div class="num">ì˜¨í”„ë ˆë¯¸ìŠ¤</div><h4>ë°ì´í„° ì£¼ê¶Œ</h4><p>êµ¬ì²­ ë‚´ë¶€ë§ì— êµ¬ì¶•í•˜ëŠ” ì†Œë²„ë¦° AIë¡œ, ì£¼ë¯¼ ë°ì´í„°ê°€ ì™¸ë¶€ë¡œ ë‚˜ê°€ì§€ ì•ŠìŠµë‹ˆë‹¤.</p></div>
     </div>
   </section>
 
-  <!-- Á¦¾È»ç -->
+  <!-- ì œì•ˆì‚¬ -->
   <section class="section">
     <div class="vendor">
       <div>
-        <h3>°ËÁõµÈ »ó¿ë AI·Î ±¸ÇöÇÕ´Ï´Ù ? <em>¢ßÅõµðÁöÆ®</em></h3>
-        <p>±ÝÀ¶ Æ¯È­ LLM°ú ¼Ò¹ö¸° AI Àü¹®±â¾÷ ÅõµðÁöÆ®´Â Åë½Å»ç »ó¿ë ¼­ºñ½º(AIRS)¸¦ ½ÇÁ¦ ¿î¿µ ÁßÀÌ¸ç, °ø°ø¡¤±ÔÁ¦ »ê¾÷ÀÌ ¿ä±¸ÇÏ´Â ¿ÂÇÁ·¹¹Ì½º ±¸Ãà°ú º¸¾È °ËÁõ Ã¼°è¸¦ °®Ãß°í ÀÖ½À´Ï´Ù.</p>
+        <h3>ê²€ì¦ëœ ìƒìš© AIë¡œ êµ¬í˜„í•©ë‹ˆë‹¤ ? <em>ãˆœíˆ¬ë””ì§€íŠ¸</em></h3>
+        <p>ê¸ˆìœµ íŠ¹í™” LLMê³¼ ì†Œë²„ë¦° AI ì „ë¬¸ê¸°ì—… íˆ¬ë””ì§€íŠ¸ëŠ” í†µì‹ ì‚¬ ìƒìš© ì„œë¹„ìŠ¤(AIRS)ë¥¼ ì‹¤ì œ ìš´ì˜ ì¤‘ì´ë©°, ê³µê³µÂ·ê·œì œ ì‚°ì—…ì´ ìš”êµ¬í•˜ëŠ” ì˜¨í”„ë ˆë¯¸ìŠ¤ êµ¬ì¶•ê³¼ ë³´ì•ˆ ê²€ì¦ ì²´ê³„ë¥¼ ê°–ì¶”ê³  ìžˆìŠµë‹ˆë‹¤.</p>
       </div>
       <ul>
-        <li><b>»ó¿ë ·¹ÆÛ·±½º</b> ? Åë½Å»ç AI ¿ä±ÝÁ¦ ÃßÃµ ¼­ºñ½º AIRS ¿î¿µ Áß (330ÅÏ ¹®¸Æ QA PASS 100%)</li>
-        <li><b>ÀÚÃ¼ LLM</b> ? Hermes¡¤NOX ±¹»ê ¸ðµ¨, HuggingFace Open LLM ¸®´õº¸µå ¼¼°è 1À§ 95ÀÏ ±â·Ï</li>
-        <li><b>º¸¾È Ã¼°è</b> ? OWASP Top 10 / LLM Top 10 ¡¤ KISA/ISMS-P ±âÁØ Ãë¾àÁ¡ Á¡°Ë ¹®¼­È­</li>
-        <li><b>Á¤È®ÇÑ ´äº¯</b> ? AgenticRAG ±â¹Ý ÃâÃ³ ÀÎ¿ëÇü ÀÀ´äÀ¸·Î È¯°¢ ÃÖ¼ÒÈ­</li>
+        <li><b>ìƒìš© ë ˆí¼ëŸ°ìŠ¤</b> ? í†µì‹ ì‚¬ AI ìš”ê¸ˆì œ ì¶”ì²œ ì„œë¹„ìŠ¤ AIRS ìš´ì˜ ì¤‘ (330í„´ ë¬¸ë§¥ QA PASS 100%)</li>
+        <li><b>ìžì²´ LLM</b> ? HermesÂ·NOX êµ­ì‚° ëª¨ë¸, HuggingFace Open LLM ë¦¬ë”ë³´ë“œ ì„¸ê³„ 1ìœ„ 95ì¼ ê¸°ë¡</li>
+        <li><b>ë³´ì•ˆ ì²´ê³„</b> ? OWASP Top 10 / LLM Top 10 Â· KISA/ISMS-P ê¸°ì¤€ ì·¨ì•½ì  ì ê²€ ë¬¸ì„œí™”</li>
+        <li><b>ì •í™•í•œ ë‹µë³€</b> ? AgenticRAG ê¸°ë°˜ ì¶œì²˜ ì¸ìš©í˜• ì‘ë‹µìœ¼ë¡œ í™˜ê° ìµœì†Œí™”</li>
       </ul>
     </div>
   </section>
@@ -569,29 +569,29 @@ footer.site b{color:#C7D6EA}
 </main>
 
 <footer class="site">
-  <b>¿ë»ê±¸Ã» AI ÇàÁ¤ ÇÃ·§Æû ? Á¦¾È ½Ã¿¬¿ë ¸ñ¾÷</b><br>
-  º» È­¸éÀÇ °í½Ã°ø°í¡¤Áö¿ø»ç¾÷¡¤¹Î¿ø Á¤º¸´Â ±â´É ½Ã¿¬À» À§ÇÑ °¡»ó µ¥ÀÌÅÍÀÔ´Ï´Ù.<br>
-  Á¦¾È: ¢ßÅõµðÁöÆ® (2Digit) ¡¤ °æ±â ¼º³²½Ã ºÐ´ç±¸ ÆÇ±³
+  <b>ìš©ì‚°êµ¬ì²­ AI í–‰ì • í”Œëž«í¼ ? ì œì•ˆ ì‹œì—°ìš© ëª©ì—…</b><br>
+  ë³¸ í™”ë©´ì˜ ê³ ì‹œê³µê³ Â·ì§€ì›ì‚¬ì—…Â·ë¯¼ì› ì •ë³´ëŠ” ê¸°ëŠ¥ ì‹œì—°ì„ ìœ„í•œ ê°€ìƒ ë°ì´í„°ìž…ë‹ˆë‹¤.<br>
+  ì œì•ˆ: ãˆœíˆ¬ë””ì§€íŠ¸ (2Digit) Â· ê²½ê¸° ì„±ë‚¨ì‹œ ë¶„ë‹¹êµ¬ íŒêµ
 </footer>
 
 <script>
-/* ---------- AI ÇÏÀÌ¶óÀÌÆ® Åä±Û ---------- */
+/* ---------- AI í•˜ì´ë¼ì´íŠ¸ í† ê¸€ ---------- */
 const toggle=document.getElementById('aiToggle');
 function flip(){const on=document.body.classList.toggle('ai-on');toggle.setAttribute('aria-checked',on)}
 toggle.addEventListener('click',flip);
 toggle.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();flip()}});
 
-/* ---------- AI ÅëÇÕ°Ë»ö ½Ã¹Ä·¹ÀÌ¼Ç ---------- */
+/* ---------- AI í†µí•©ê²€ìƒ‰ ì‹œë®¬ë ˆì´ì…˜ ---------- */
 const QA={
   waste:{
-    q:'´ëÇüÆó±â¹°Àº ¾î¶»°Ô ¹ö¸®³ª¿ä?',
-    a:'´ëÇüÆó±â¹°(°¡±¸¡¤°¡Àü µî)Àº ´ÙÀ½ ÀýÂ÷·Î ¹èÃâÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.\n\n1) ½Å°í: ±¸Ã» È¨ÆäÀÌÁö ¶Ç´Â ¸ð¹ÙÀÏ ¾Û¿¡¼­ Ç°¸ñ¡¤±Ô°ÝÀ» ÀÔ·ÂÇÏ°í ¼ö¼ö·á¸¦ °áÁ¦ÇÕ´Ï´Ù. µ¿ÁÖ¹Î¼¾ÅÍ ¹æ¹® ½Å°íµµ °¡´ÉÇÕ´Ï´Ù.\n2) ½ºÆ¼Ä¿ ºÎÂø: ¹ß±ÞµÈ ½Å°íÇÊÁõ(½ºÆ¼Ä¿)À» Æó±â¹°¿¡ ºÙÀÔ´Ï´Ù.\n3) ¹èÃâ: ÁöÁ¤ÇÑ ³¯Â¥¿¡ ÁÖ°ÅÁö ¾Õ ÁöÁ¤ Àå¼Ò¿¡ ³»³õÀ¸¸é ¼ö°ÅµË´Ï´Ù.\n\nÂü°í·Î Æó°¡Àü(³ÃÀå°í¡¤¼¼Å¹±â µî)Àº ¹«»ó ¹æ¹®¼ö°Å ¼­ºñ½º¸¦ ÀÌ¿ëÇÏ¸é ¼ö¼ö·á ¾øÀÌ ¹èÃâÇÒ ¼ö ÀÖ½À´Ï´Ù.',
-    src:['¹Î¿øÆí¶÷ ? ´ëÇüÆó±â¹° ¹èÃâ','Ã»¼ÒÇàÁ¤°ú ¾È³» ÆäÀÌÁö','¿ë»ê»ýÈ°°¡ÀÌµå']
+    q:'ëŒ€í˜•íê¸°ë¬¼ì€ ì–´ë–»ê²Œ ë²„ë¦¬ë‚˜ìš”?',
+    a:'ëŒ€í˜•íê¸°ë¬¼(ê°€êµ¬Â·ê°€ì „ ë“±)ì€ ë‹¤ìŒ ì ˆì°¨ë¡œ ë°°ì¶œí•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.\n\n1) ì‹ ê³ : êµ¬ì²­ í™ˆíŽ˜ì´ì§€ ë˜ëŠ” ëª¨ë°”ì¼ ì•±ì—ì„œ í’ˆëª©Â·ê·œê²©ì„ ìž…ë ¥í•˜ê³  ìˆ˜ìˆ˜ë£Œë¥¼ ê²°ì œí•©ë‹ˆë‹¤. ë™ì£¼ë¯¼ì„¼í„° ë°©ë¬¸ ì‹ ê³ ë„ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n2) ìŠ¤í‹°ì»¤ ë¶€ì°©: ë°œê¸‰ëœ ì‹ ê³ í•„ì¦(ìŠ¤í‹°ì»¤)ì„ íê¸°ë¬¼ì— ë¶™ìž…ë‹ˆë‹¤.\n3) ë°°ì¶œ: ì§€ì •í•œ ë‚ ì§œì— ì£¼ê±°ì§€ ì•ž ì§€ì • ìž¥ì†Œì— ë‚´ë†“ìœ¼ë©´ ìˆ˜ê±°ë©ë‹ˆë‹¤.\n\nì°¸ê³ ë¡œ íê°€ì „(ëƒ‰ìž¥ê³ Â·ì„¸íƒê¸° ë“±)ì€ ë¬´ìƒ ë°©ë¬¸ìˆ˜ê±° ì„œë¹„ìŠ¤ë¥¼ ì´ìš©í•˜ë©´ ìˆ˜ìˆ˜ë£Œ ì—†ì´ ë°°ì¶œí•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.',
+    src:['ë¯¼ì›íŽ¸ëžŒ ? ëŒ€í˜•íê¸°ë¬¼ ë°°ì¶œ','ì²­ì†Œí–‰ì •ê³¼ ì•ˆë‚´ íŽ˜ì´ì§€','ìš©ì‚°ìƒí™œê°€ì´ë“œ']
   },
   hannam:{
-    q:'ÇÑ³²µ¿ Àç°³¹ß °ø¶÷ ¾îµð¼­ ºÁ¿ä?',
-    a:'ÇÑ³²µ¿ ¡Û±¸¿ª ÀçÁ¤ºñÃËÁø°èÈ¹ º¯°æ(¾È) ÁÖ¹Î °ø¶÷ÀÌ ÁøÇà ÁßÀÔ´Ï´Ù.\n\n? °ø¶÷ ±â°£: 9.21 ~ 10.5 (14ÀÏ°£)\n? ¿­¶÷ Àå¼Ò: ±¸Ã» ÀçÁ¤ºñ»ç¾÷°ú, ÇÑ³²µ¿ ÁÖ¹Î¼¾ÅÍ, ±¸Ã» È¨ÆäÀÌÁö °í½Ã°ø°í °Ô½ÃÆÇ\n? ÀÇ°ß Á¦Ãâ: °ø¶÷ ±â°£ ³» ¹æ¹®¡¤¿ìÆí¡¤¿Â¶óÀÎ ¸ðµÎ °¡´É\n\nº¯°æ ÇÙ½ÉÀº °ø°øº¸ÇàÅë·Î ½Å¼³°ú ÀÏºÎ È¹Áö ¿ëÀû·ü Á¶Á¤ÀÌ¸ç, ¼¼´ë¼ö º¯µ¿Àº ¾ø½À´Ï´Ù. ³» °ÅÁÖÁö Æ÷ÇÔ ¿©ºÎ´Â °ø°í¹® Ã·ºÎ µµ¸é 3¸é¿¡¼­ È®ÀÎÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.',
-    src:['°í½Ã°ø°í Á¦2026-914È£','ÀçÁ¤ºñ»ç¾÷°ú °ø¶÷ ¾È³»','Ã·ºÎ µµ¸é p.3']
+    q:'í•œë‚¨ë™ ìž¬ê°œë°œ ê³µëžŒ ì–´ë””ì„œ ë´ìš”?',
+    a:'í•œë‚¨ë™ â—‹êµ¬ì—­ ìž¬ì •ë¹„ì´‰ì§„ê³„íš ë³€ê²½(ì•ˆ) ì£¼ë¯¼ ê³µëžŒì´ ì§„í–‰ ì¤‘ìž…ë‹ˆë‹¤.\n\n? ê³µëžŒ ê¸°ê°„: 9.21 ~ 10.5 (14ì¼ê°„)\n? ì—´ëžŒ ìž¥ì†Œ: êµ¬ì²­ ìž¬ì •ë¹„ì‚¬ì—…ê³¼, í•œë‚¨ë™ ì£¼ë¯¼ì„¼í„°, êµ¬ì²­ í™ˆíŽ˜ì´ì§€ ê³ ì‹œê³µê³  ê²Œì‹œíŒ\n? ì˜ê²¬ ì œì¶œ: ê³µëžŒ ê¸°ê°„ ë‚´ ë°©ë¬¸Â·ìš°íŽ¸Â·ì˜¨ë¼ì¸ ëª¨ë‘ ê°€ëŠ¥\n\në³€ê²½ í•µì‹¬ì€ ê³µê³µë³´í–‰í†µë¡œ ì‹ ì„¤ê³¼ ì¼ë¶€ íšì§€ ìš©ì ë¥  ì¡°ì •ì´ë©°, ì„¸ëŒ€ìˆ˜ ë³€ë™ì€ ì—†ìŠµë‹ˆë‹¤. ë‚´ ê±°ì£¼ì§€ í¬í•¨ ì—¬ë¶€ëŠ” ê³µê³ ë¬¸ ì²¨ë¶€ ë„ë©´ 3ë©´ì—ì„œ í™•ì¸í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.',
+    src:['ê³ ì‹œê³µê³  ì œ2026-914í˜¸','ìž¬ì •ë¹„ì‚¬ì—…ê³¼ ê³µëžŒ ì•ˆë‚´','ì²¨ë¶€ ë„ë©´ p.3']
   },
   foreign:{
     q:'What support is available for foreign residents?',
@@ -629,13 +629,13 @@ document.getElementById('chips').addEventListener('click',e=>{
 });
 document.getElementById('askBtn').addEventListener('click',()=>{
   const v=qInput.value;
-  if(/ÇÑ³²|Àç°³¹ß|°ø¶÷/.test(v))runQA('hannam');
+  if(/í•œë‚¨|ìž¬ê°œë°œ|ê³µëžŒ/.test(v))runQA('hannam');
   else if(/[A-Za-z]{3,}|foreign|english/i.test(v))runQA('foreign');
   else runQA('waste');
 });
 qInput.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('askBtn').click()});
 
-/* ---------- ÅÇ ---------- */
+/* ---------- íƒ­ ---------- */
 document.querySelectorAll('.tabs [role="tab"]').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.tabs [role="tab"]').forEach(x=>x.setAttribute('aria-selected','false'));
@@ -645,23 +645,23 @@ document.querySelectorAll('.tabs [role="tab"]').forEach(t=>{
   });
 });
 
-/* ---------- °í½Ã°ø°í ¿ä¾à Åä±Û ---------- */
+/* ---------- ê³ ì‹œê³µê³  ìš”ì•½ í† ê¸€ ---------- */
 document.querySelectorAll('.rec').forEach(r=>{
   r.addEventListener('click',()=>{
     const s=document.getElementById(r.dataset.sum);
     const open=s.classList.toggle('show');
     r.setAttribute('aria-expanded',open);
-    r.querySelector('.go').textContent=open?'Á¢±â ?':'AI ¿ä¾à º¸±â ?';
+    r.querySelector('.go').textContent=open?'ì ‘ê¸° ?':'AI ìš”ì•½ ë³´ê¸° ?';
   });
 });
 
-/* ---------- ¹Î¿ø »çÀüºÐ¼® ---------- */
+/* ---------- ë¯¼ì› ì‚¬ì „ë¶„ì„ ---------- */
 const CHECKS=[
-  ['ok','¼Ò°ü ºÎ¼­ ºÐ·ù ? °¡·Îµî °íÀåÀº <b>µµ·Î°ú(°¡·ÎµîÆÀ)</b> ¼Ò°üÀÔ´Ï´Ù. Á¢¼ö ½Ã ÀÚµ¿ ÀÌ°üµË´Ï´Ù.'],
-  ['info','À¯»ç »ç·Ê ? ÃÖ±Ù 3°³¿ù °ü³» °¡·Îµî °íÀå ¹Î¿ø 38°Ç, Æò±Õ Ã³¸® ±â°£ 3.5ÀÏ (±ä±Þ ½Ã ÀÍÀÏ Ã³¸®).'],
-  ['warn','º¹ÇÕ ¹Î¿ø °¨Áö ? CCTV Ãß°¡ ¼³Ä¡´Â º°µµ ¼Ò°ü(¾ÈÀüÀç³­°ú)ÀÌ¸ç ÁÖ¹Î ¼ö¿äÁ¶»ç¡¤¿¹»ê ÀýÂ÷°¡ ÇÊ¿äÇÕ´Ï´Ù. ¹Î¿øÀ» 2°ÇÀ¸·Î ºÐ¸® Á¢¼öÇÏ´Â °ÍÀ» ±ÇÀåÇÕ´Ï´Ù.'],
-  ['ok','ÇÊ¿ä Á¤º¸ È®ÀÎ ? °æ»çÁö °ñ¸ñÀº Á¤È®ÇÑ À§Ä¡ Æ¯Á¤ÀÌ Áß¿äÇÕ´Ï´Ù. µµ·Î¸íÁÖ¼Ò ¶Ç´Â °¡·Îµî °ü¸®¹øÈ£, »çÁø Ã·ºÎ¸¦ ±ÇÀåÇÕ´Ï´Ù.'],
-  ['info','ÁøÇà ¾Ë¸² ? Á¢¼ö ¿Ï·á ½Ã Ã³¸® ´Ü°èº° ¾Ë¸²ÅåÀ» ¹Þ¾Æº¸½Ç ¼ö ÀÖ½À´Ï´Ù.']
+  ['ok','ì†Œê´€ ë¶€ì„œ ë¶„ë¥˜ ? ê°€ë¡œë“± ê³ ìž¥ì€ <b>ë„ë¡œê³¼(ê°€ë¡œë“±íŒ€)</b> ì†Œê´€ìž…ë‹ˆë‹¤. ì ‘ìˆ˜ ì‹œ ìžë™ ì´ê´€ë©ë‹ˆë‹¤.'],
+  ['info','ìœ ì‚¬ ì‚¬ë¡€ ? ìµœê·¼ 3ê°œì›” ê´€ë‚´ ê°€ë¡œë“± ê³ ìž¥ ë¯¼ì› 38ê±´, í‰ê·  ì²˜ë¦¬ ê¸°ê°„ 3.5ì¼ (ê¸´ê¸‰ ì‹œ ìµì¼ ì²˜ë¦¬).'],
+  ['warn','ë³µí•© ë¯¼ì› ê°ì§€ ? CCTV ì¶”ê°€ ì„¤ì¹˜ëŠ” ë³„ë„ ì†Œê´€(ì•ˆì „ìž¬ë‚œê³¼)ì´ë©° ì£¼ë¯¼ ìˆ˜ìš”ì¡°ì‚¬Â·ì˜ˆì‚° ì ˆì°¨ê°€ í•„ìš”í•©ë‹ˆë‹¤. ë¯¼ì›ì„ 2ê±´ìœ¼ë¡œ ë¶„ë¦¬ ì ‘ìˆ˜í•˜ëŠ” ê²ƒì„ ê¶Œìž¥í•©ë‹ˆë‹¤.'],
+  ['ok','í•„ìš” ì •ë³´ í™•ì¸ ? ê²½ì‚¬ì§€ ê³¨ëª©ì€ ì •í™•í•œ ìœ„ì¹˜ íŠ¹ì •ì´ ì¤‘ìš”í•©ë‹ˆë‹¤. ë„ë¡œëª…ì£¼ì†Œ ë˜ëŠ” ê°€ë¡œë“± ê´€ë¦¬ë²ˆí˜¸, ì‚¬ì§„ ì²¨ë¶€ë¥¼ ê¶Œìž¥í•©ë‹ˆë‹¤.'],
+  ['info','ì§„í–‰ ì•Œë¦¼ ? ì ‘ìˆ˜ ì™„ë£Œ ì‹œ ì²˜ë¦¬ ë‹¨ê³„ë³„ ì•Œë¦¼í†¡ì„ ë°›ì•„ë³´ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.']
 ];
 document.getElementById('checkBtn').addEventListener('click',()=>{
   const ph=document.getElementById('resultPh'),sp=document.getElementById('spinner'),list=document.getElementById('resultList');
@@ -670,19 +670,19 @@ document.getElementById('checkBtn').addEventListener('click',()=>{
     sp.classList.remove('show');
     CHECKS.forEach((c,i)=>{
       const d=document.createElement('div');d.className='check-item';d.style.animationDelay=(i*.18)+'s';
-      d.innerHTML='<span class="stat '+c[0]+'">'+(c[0]==='ok'?'È®ÀÎ':c[0]==='warn'?'°ËÅä':'¾È³»')+'</span><span>'+c[1]+'</span>';
+      d.innerHTML='<span class="stat '+c[0]+'">'+(c[0]==='ok'?'í™•ì¸':c[0]==='warn'?'ê²€í† ':'ì•ˆë‚´')+'</span><span>'+c[1]+'</span>';
       list.appendChild(d);
     });
   },1400);
 });
 
-/* ---------- Áö¿ø»ç¾÷ ¸ÅÄª ---------- */
+/* ---------- ì§€ì›ì‚¬ì—… ë§¤ì¹­ ---------- */
 document.getElementById('matchSel').addEventListener('change',e=>{
   document.querySelectorAll('.match-set').forEach(c=>c.classList.remove('show'));
   if(e.target.value)document.getElementById(e.target.value).classList.add('show');
 });
 
-/* ---------- ±¸¹Î Ãªº¿ ½Ã¹Ä·¹ÀÌ¼Ç ---------- */
+/* ---------- êµ¬ë¯¼ ì±—ë´‡ ì‹œë®¬ë ˆì´ì…˜ ---------- */
 const log=document.getElementById('chatLog');
 function push(cls,html,delay){
   return new Promise(res=>{
@@ -695,17 +695,17 @@ function push(cls,html,delay){
 async function chatDemo1(){
   const b1=document.getElementById('demoChat1'),b2=document.getElementById('demoChat2');
   b1.disabled=b2.disabled=true;
-  await push('user','ÀÌÅÂ¿ø °Å¸®¿¡ °ü±¤¹ö½º¶û ½Â¿ëÂ÷°¡ °è¼Ó ºÒ¹ýÁÖÂ÷µÇ¾î ÀÖ¾î¿ä. ½Å°íÇÏ·Á¸é ¾î¶»°Ô ÇÏ³ª¿ä?',150);
-  await push('bot','ºÒ¹ýÁÖÁ¤Â÷ ½Å°í ¹æ¹ýÀ» ¾È³»ÇØ µå¸±°Ô¿ä.<br><br>¨ç <b>¾ÈÀü½Å¹®°í ¾Û</b> ? 1ºÐ °£°Ý »çÁø 2Àå ÃÔ¿µ ÈÄ Á¦Ãâ (Áï½Ã ´Ü¼Ó ¿äÃ»)<br>¨è <b>±¸Ã» ÁÖÂ÷°ü¸®°ú</b> ÀüÈ­ ½Å°í<br><br>ÀÌÅÂ¿ø °ü±¤Æ¯±¸ ÁÖº¯ µµ·Î´Â <b>ÁÖ¸»¡¤¾ß°£ ´Ü¼Ó °­È­ ±¸°£</b>ÀÌ º°µµ·Î ¿î¿µµË´Ï´Ù. Á¤È®ÇÑ À§Ä¡(µµ·Î¸íÁÖ¼Ò)¸¦ ¾Ë·ÁÁÖ½Ã¸é ´Ü¼Ó °¡´É ±¸¿ªÀÎÁö ¹Ù·Î È®ÀÎÇØ µå¸±°Ô¿ä.',1200);
-  await push('bot','Âü°í·Î »ó½À ±¸°£Àº ´Ü¼Ó ¿äÃ» ÀÌ·ÂÀÌ ´©ÀûµÇ¸é °íÁ¤½Ä ´Ü¼Ó Ä«¸Þ¶ó ¼³Ä¡ °ËÅä ´ë»óÀÌ µË´Ï´Ù. ÀÌ¹ø ½Å°íµµ ÀÌ·Â¿¡ ¹Ý¿µµË´Ï´Ù.',1100);
+  await push('user','ì´íƒœì› ê±°ë¦¬ì— ê´€ê´‘ë²„ìŠ¤ëž‘ ìŠ¹ìš©ì°¨ê°€ ê³„ì† ë¶ˆë²•ì£¼ì°¨ë˜ì–´ ìžˆì–´ìš”. ì‹ ê³ í•˜ë ¤ë©´ ì–´ë–»ê²Œ í•˜ë‚˜ìš”?',150);
+  await push('bot','ë¶ˆë²•ì£¼ì •ì°¨ ì‹ ê³  ë°©ë²•ì„ ì•ˆë‚´í•´ ë“œë¦´ê²Œìš”.<br><br>â‘  <b>ì•ˆì „ì‹ ë¬¸ê³  ì•±</b> ? 1ë¶„ ê°„ê²© ì‚¬ì§„ 2ìž¥ ì´¬ì˜ í›„ ì œì¶œ (ì¦‰ì‹œ ë‹¨ì† ìš”ì²­)<br>â‘¡ <b>êµ¬ì²­ ì£¼ì°¨ê´€ë¦¬ê³¼</b> ì „í™” ì‹ ê³ <br><br>ì´íƒœì› ê´€ê´‘íŠ¹êµ¬ ì£¼ë³€ ë„ë¡œëŠ” <b>ì£¼ë§Â·ì•¼ê°„ ë‹¨ì† ê°•í™” êµ¬ê°„</b>ì´ ë³„ë„ë¡œ ìš´ì˜ë©ë‹ˆë‹¤. ì •í™•í•œ ìœ„ì¹˜(ë„ë¡œëª…ì£¼ì†Œ)ë¥¼ ì•Œë ¤ì£¼ì‹œë©´ ë‹¨ì† ê°€ëŠ¥ êµ¬ì—­ì¸ì§€ ë°”ë¡œ í™•ì¸í•´ ë“œë¦´ê²Œìš”.',1200);
+  await push('bot','ì°¸ê³ ë¡œ ìƒìŠµ êµ¬ê°„ì€ ë‹¨ì† ìš”ì²­ ì´ë ¥ì´ ëˆ„ì ë˜ë©´ ê³ ì •ì‹ ë‹¨ì† ì¹´ë©”ë¼ ì„¤ì¹˜ ê²€í†  ëŒ€ìƒì´ ë©ë‹ˆë‹¤. ì´ë²ˆ ì‹ ê³ ë„ ì´ë ¥ì— ë°˜ì˜ë©ë‹ˆë‹¤.',1100);
   b1.disabled=b2.disabled=false;
 }
 async function chatDemo2(){
   const b1=document.getElementById('demoChat1'),b2=document.getElementById('demoChat2');
   b1.disabled=b2.disabled=true;
-  await push('user','´ÙÀ½ ÁÖ¿¡ ÀÌÃÌµ¿À¸·Î ÀÌ»çÇÏ´Âµ¥ ÀüÀÔ½Å°í´Â ¾î¶»°Ô ÇÏ³ª¿ä?',150);
-  await push('bot','ÀüÀÔ½Å°í´Â <b>ÀÌ»çÇÑ ³¯ºÎÅÍ 14ÀÏ ÀÌ³»</b>¿¡ ÇÏ½Ã¸é µË´Ï´Ù.<br><br>¨ç <b>¿Â¶óÀÎ</b> ? Á¤ºÎ24¿¡¼­ °øµ¿ÀÎÁõ¼­·Î ½Å°í (¹æ¹® ºÒÇÊ¿ä)<br>¨è <b>¹æ¹®</b> ? ÀÌÃÌµ¿ ÁÖ¹Î¼¾ÅÍ, ½ÅºÐÁõ ÁöÂü<br><br>¼¼´ëÁÖ°¡ ¾Æ´Ñ ¼¼´ë¿øÀÌ ½Å°íÇÏ´Â °æ¿ì ¼¼´ëÁÖ È®ÀÎ ÀýÂ÷°¡ Ãß°¡µË´Ï´Ù.',1200);
-  await push('bot','ÀüÀÔ½Å°í¿Í ÇÔ²² Ã³¸®ÇÏ¸é ÆíÇÑ °Íµéµµ Ã¬°Üµå¸±°Ô¿ä: <b>ÀÚµ¿Â÷ ÁÖ¼Ò º¯°æ(ÀÚµ¿ ¿¬°è)</b>, <b>¿ìÆí¹° ÁÖ¼Ò ÀÌÀü ¼­ºñ½º</b>, ÃÊµîÇÐ»ý ÀÚ³à°¡ ÀÖ´Ù¸é <b>ÀüÇÐ ÀýÂ÷</b>. ÇØ´çµÇ´Â Ç×¸ñÀÌ ÀÖÀ¸½Å°¡¿ä?',1100);
+  await push('user','ë‹¤ìŒ ì£¼ì— ì´ì´Œë™ìœ¼ë¡œ ì´ì‚¬í•˜ëŠ”ë° ì „ìž…ì‹ ê³ ëŠ” ì–´ë–»ê²Œ í•˜ë‚˜ìš”?',150);
+  await push('bot','ì „ìž…ì‹ ê³ ëŠ” <b>ì´ì‚¬í•œ ë‚ ë¶€í„° 14ì¼ ì´ë‚´</b>ì— í•˜ì‹œë©´ ë©ë‹ˆë‹¤.<br><br>â‘  <b>ì˜¨ë¼ì¸</b> ? ì •ë¶€24ì—ì„œ ê³µë™ì¸ì¦ì„œë¡œ ì‹ ê³  (ë°©ë¬¸ ë¶ˆí•„ìš”)<br>â‘¡ <b>ë°©ë¬¸</b> ? ì´ì´Œë™ ì£¼ë¯¼ì„¼í„°, ì‹ ë¶„ì¦ ì§€ì°¸<br><br>ì„¸ëŒ€ì£¼ê°€ ì•„ë‹Œ ì„¸ëŒ€ì›ì´ ì‹ ê³ í•˜ëŠ” ê²½ìš° ì„¸ëŒ€ì£¼ í™•ì¸ ì ˆì°¨ê°€ ì¶”ê°€ë©ë‹ˆë‹¤.',1200);
+  await push('bot','ì „ìž…ì‹ ê³ ì™€ í•¨ê»˜ ì²˜ë¦¬í•˜ë©´ íŽ¸í•œ ê²ƒë“¤ë„ ì±™ê²¨ë“œë¦´ê²Œìš”: <b>ìžë™ì°¨ ì£¼ì†Œ ë³€ê²½(ìžë™ ì—°ê³„)</b>, <b>ìš°íŽ¸ë¬¼ ì£¼ì†Œ ì´ì „ ì„œë¹„ìŠ¤</b>, ì´ˆë“±í•™ìƒ ìžë…€ê°€ ìžˆë‹¤ë©´ <b>ì „í•™ ì ˆì°¨</b>. í•´ë‹¹ë˜ëŠ” í•­ëª©ì´ ìžˆìœ¼ì‹ ê°€ìš”?',1100);
   b1.disabled=b2.disabled=false;
 }
 document.getElementById('demoChat1').addEventListener('click',chatDemo1);

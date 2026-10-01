@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>용산구청 AI 행정 플랫폼 ? 시연용 목업</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light only;
+  --navy:#133A66;          /* 구정 기관색 */
+  --navy-deep:#0B2645;
+  --gov-blue:#1263AC;
+  --paper:#F5F7FA;
+  --card:#FFFFFF;
+  --line:#DCE3EC;
+  --ink:#1C2534;
+  --sub:#5B6B80;
+  --ai:#0D8F7B;            /* AI 기능 식별색 (청록) */
+  --ai-soft:#E4F5F1;
+  --ai-line:#9BD9CD;
+  --gold:#C89B3C;
+  --radius:14px;
+  font-size:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.6;
+}
+::selection{background:var(--ai);color:#fff}
+
+/* ---------- 데모 컨트롤 바 ---------- */
+.demo-bar{
+  position:sticky;top:0;z-index:100;
+  background:var(--navy-deep);color:#fff;
+  display:flex;align-items:center;gap:14px;
+  padding:10px 20px;font-size:.82rem;
+}
+.demo-bar .tag{
+  background:var(--gold);color:var(--navy-deep);
+  font-weight:700;padding:2px 10px;border-radius:20px;font-size:.75rem;letter-spacing:.02em;
+}
+.demo-bar .grow{flex:1}
+.toggle-wrap{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.toggle{
+  width:44px;height:24px;border-radius:24px;background:#3A4A63;position:relative;transition:background .25s;flex:none;
+}
+.toggle::after{
+  content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;
+  background:#fff;transition:transform .25s;
+}
+body.ai-on .toggle{background:var(--ai)}
+body.ai-on .toggle::after{transform:translateX(20px)}
+.toggle-label{font-weight:700}
+.toggle-label b{color:#7FE0CF}
+
+/* AI 하이라이트 모드 */
+.ai-feature{position:relative;transition:box-shadow .3s, outline-color .3s;outline:2px solid transparent;outline-offset:3px}
+body.ai-on .ai-feature{outline-color:var(--ai);box-shadow:0 0 0 6px rgba(13,143,123,.08)}
+.ai-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--ai);color:#fff;font-size:.68rem;font-weight:700;
+  padding:2px 9px;border-radius:20px;letter-spacing:.04em;vertical-align:middle;
+}
+.ai-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#B7F0E4}
+
+/* ---------- 헤더 (구청 사이트 재현) ---------- */
+header.site{
+  background:linear-gradient(180deg,var(--navy) 0%,#17487C 100%);color:#fff;
+}
+.util{
+  max-width:1120px;margin:0 auto;padding:8px 24px;
+  display:flex;justify-content:flex-end;gap:18px;font-size:.75rem;color:#AAB9CE;
+}
+.util span{cursor:pointer}
+.util span.lang{color:#8CEBD9;font-weight:700}
+.masthead{
+  max-width:1120px;margin:0 auto;padding:18px 24px 0;
+  display:flex;align-items:center;gap:14px;
+}
+.emblem{
+  width:46px;height:46px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%,#2C7BC4,#124B85);
+  display:flex;align-items:center;justify-content:center;flex:none;
+  font-family:'Noto Serif KR',serif;font-weight:900;font-size:.85rem;color:#fff;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);letter-spacing:.02em;
+}
+.sitename{font-family:'Noto Serif KR',serif;font-weight:900;font-size:1.5rem;letter-spacing:.01em}
+.sitename small{display:block;font-family:'Noto Sans KR';font-weight:500;font-size:.7rem;color:#9FB3CE;letter-spacing:.24em;margin-top:-2px}
+nav.gnb{max-width:1120px;margin:14px auto 0;padding:0 24px;display:flex;gap:4px;flex-wrap:wrap}
+nav.gnb a{
+  color:#D7E2F0;text-decoration:none;font-weight:700;font-size:.95rem;
+  padding:12px 18px;border-radius:10px 10px 0 0;transition:background .2s;
+}
+nav.gnb a:hover,nav.gnb a:focus-visible{background:rgba(255,255,255,.12);color:#fff;outline:none}
+nav.gnb a.ai-nav{color:#8CEBD9}
+body.ai-on nav.gnb a.ai-nav{background:rgba(13,143,123,.35);color:#B9F5E9}
+
+/* ---------- 히어로: AI 통합검색 ---------- */
+.hero{
+  background:linear-gradient(180deg,#17487C 0%,#1E5996 60%,#F5F7FA 60.1%);
+  padding:44px 24px 0;
+}
+.hero-inner{max-width:860px;margin:0 auto;text-align:center;color:#fff}
+.hero h1{
+  font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(1.4rem,3.4vw,2.1rem);
+  letter-spacing:-.01em;
+}
+.hero h1 em{font-style:normal;color:#8CEBD9}
+.hero p.lede{color:#C4D4E8;font-size:.92rem;margin-top:8px}
+.searchbox{
+  margin:26px auto 0;max-width:760px;background:var(--card);border-radius:var(--radius);
+  box-shadow:0 16px 40px rgba(9,25,49,.28);overflow:hidden;text-align:left;
+}
+.search-row{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.search-row .orb{
+  width:34px;height:34px;border-radius:50%;flex:none;
+  background:conic-gradient(from 210deg,var(--ai),#33B9A2,#0A6E5F,var(--ai));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.8rem;
+}
+.search-row input{
+  flex:1;border:none;outline:none;font-size:1rem;font-family:inherit;color:var(--ink);min-width:0;background:#fff;
+}
+.search-row input::placeholder{color:#9AA9BE}
+.ask-btn{
+  flex:none;background:var(--ai);color:#fff;border:none;border-radius:10px;
+  font-weight:700;font-size:.9rem;padding:10px 20px;cursor:pointer;font-family:inherit;
+}
+.ask-btn:hover{background:#0B7A69}
+.ask-btn:focus-visible{outline:3px solid var(--ai-line)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding:12px 18px 16px;background:#FBFCFE}
+.chips button{
+  border:1px solid var(--line);background:#fff;border-radius:20px;
+  font-size:.8rem;color:var(--sub);padding:7px 14px;cursor:pointer;font-family:inherit;transition:all .15s;
+}
+.chips button:hover{border-color:var(--ai);color:var(--ai)}
+.chips button:focus-visible{outline:2px solid var(--ai)}
+.chips button.en{border-color:#C9DCF0;color:#1263AC;font-weight:700}
+.chips button.en:hover{border-color:var(--ai);color:var(--ai)}
+
+/* 답변 패널 */
+.answer{display:none;padding:20px 22px;border-top:1px solid var(--line)}
+.answer.show{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.answer .q{font-weight:700;font-size:.92rem;color:var(--gov-blue);margin-bottom:10px}
+.answer .a{font-size:.94rem;white-space:pre-wrap;color:var(--ink)}
+.answer .a .cursor{display:inline-block;width:8px;height:1.05em;background:var(--ai);vertical-align:text-bottom;animation:blink .8s steps(1) infinite;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.src-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.src{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--ai-soft);border:1px solid var(--ai-line);color:#0A6E5F;
+  border-radius:8px;font-size:.75rem;font-weight:700;padding:6px 10px;cursor:pointer;
+}
+.src::before{content:'??'}
+.answer .note{font-size:.72rem;color:#93A2B7;margin-top:12px}
+
+/* ---------- 본문 공통 ---------- */
+main{max-width:1120px;margin:0 auto;padding:48px 24px 20px}
+.section-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.section-head h2{
+  font-family:'Noto Serif KR',serif;font-weight:900;font-size:1.35rem;color:var(--navy);
+}
+.section-head .sub{color:var(--sub);font-size:.85rem}
+.section{margin-bottom:56px}
+
+/* ---------- 기능 데모: 탭 ---------- */
+.feature-shell{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:16px}
+.tabs{display:flex;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{
+  flex:1;min-width:150px;border:none;background:#F2F5F9;font-family:inherit;
+  font-weight:700;font-size:.88rem;color:var(--sub);padding:14px 12px;cursor:pointer;
+  border-bottom:3px solid transparent;transition:all .15s;white-space:nowrap;
+}
+.tabs button[aria-selected="true"]{background:#fff;color:var(--ai);border-bottom-color:var(--ai)}
+.tabs button:focus-visible{outline:2px solid var(--ai);outline-offset:-4px}
+.panel{display:none;padding:24px}
+.panel.active{display:block;animation:fadeUp .3s ease}
+
+/* 고시공고 요약 패널 */
+.rec-list{display:grid;gap:10px}
+.rec{
+  display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s;font-family:inherit;text-align:left;width:100%;
+}
+.rec:hover,.rec[aria-expanded="true"]{border-color:var(--ai)}
+.rec:focus-visible{outline:2px solid var(--ai)}
+.rec .date{flex:none;font-size:.75rem;color:var(--sub);width:82px}
+.rec .title{font-weight:700;font-size:.92rem;flex:1;color:var(--ink)}
+.rec .go{flex:none;font-size:.78rem;color:var(--ai);font-weight:700}
+.summary{
+  display:none;border:1px solid var(--ai-line);background:var(--ai-soft);
+  border-radius:10px;padding:18px 20px;margin:4px 0 8px;
+}
+.summary.show{display:block;animation:fadeUp .3s ease}
+.summary h4{font-size:.82rem;color:#0A6E5F;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.summary ul{list-style:none;display:grid;gap:8px}
+.summary li{font-size:.9rem;padding-left:20px;position:relative;color:var(--ink)}
+.summary li b{color:#075E51}
+.summary li::before{content:'';position:absolute;left:4px;top:.55em;width:7px;height:7px;border-radius:2px;background:var(--ai)}
+.kw-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.kw{background:#fff;border:1px solid var(--ai-line);color:#0A6E5F;font-size:.72rem;font-weight:700;border-radius:20px;padding:3px 10px}
+
+/* 민원 사전분류 패널 */
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.review-grid{grid-template-columns:1fr}}
+.review-grid textarea{
+  width:100%;height:220px;border:1px solid var(--line);border-radius:10px;
+  font-family:inherit;font-size:.88rem;padding:14px;resize:vertical;color:var(--ink);background:#FBFCFE;
+}
+.review-grid textarea:focus{outline:2px solid var(--ai);border-color:var(--ai)}
+.check-btn{
+  margin-top:12px;background:var(--ai);color:#fff;border:none;border-radius:10px;
+  font-family:inherit;font-weight:700;font-size:.9rem;padding:11px 22px;cursor:pointer;
+}
+.check-btn:hover{background:#0B7A69}
+.check-btn:focus-visible{outline:3px solid var(--ai-line)}
+.result-box{border:1px solid var(--line);border-radius:10px;padding:18px;min-height:220px;background:#fff}
+.result-box .placeholder{color:#9AA9BE;font-size:.86rem;text-align:center;padding-top:70px}
+.check-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.86rem;color:var(--ink);opacity:0;animation:fadeUp .4s ease forwards}
+.check-item b{color:var(--ink)}
+.check-item:last-child{border-bottom:none}
+.check-item .stat{flex:none;font-weight:900;font-size:.78rem;border-radius:6px;padding:2px 8px;height:fit-content}
+.stat.ok{background:#E7F5EC;color:#1B7A3D}
+.stat.warn{background:#FDF1DE;color:#A16A07}
+.stat.info{background:#E7EFFA;color:#1D5FA8}
+.spinner{display:none;color:var(--ai);font-size:.85rem;font-weight:700;padding-top:80px;text-align:center}
+.spinner.show{display:block}
+
+/* 지원사업 매칭 패널 */
+.match-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.match-top select{
+  font-family:inherit;font-size:.9rem;padding:10px 14px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--ink);min-width:240px;
+}
+.match-top select:focus{outline:2px solid var(--ai)}
+.match-set{display:none;grid-template-columns:1fr 1fr;gap:12px}
+.match-set.show{display:grid;animation:fadeUp .3s ease}
+@media(max-width:680px){.match-set.show{grid-template-columns:1fr}}
+.match-card{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fff}
+.match-card .pct{font-family:'Noto Serif KR',serif;font-weight:900;color:var(--ai);font-size:1.1rem}
+.match-card h4{font-size:.95rem;margin:4px 0 6px;color:var(--navy)}
+.match-card p{font-size:.8rem;color:var(--sub)}
+.match-card .why{margin-top:10px;background:var(--ai-soft);border-radius:8px;padding:8px 12px;font-size:.78rem;color:#0A6E5F}
+.match-card .why b{color:#075E51}
+
+/* ---------- 구민 챗봇 ---------- */
+.civic{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;margin-top:16px}
+@media(max-width:820px){.civic{grid-template-columns:1fr}}
+.civic-copy h3{font-size:1.05rem;font-weight:900;color:var(--navy);margin-bottom:10px}
+.civic-copy p{font-size:.9rem;color:var(--sub);margin-bottom:14px}
+.civic-copy ul{list-style:none;display:grid;gap:10px}
+.civic-copy li{font-size:.88rem;padding-left:24px;position:relative;color:var(--ink)}
+.civic-copy li b{color:#0A6E5F}
+.civic-copy li::before{content:'?';position:absolute;left:2px;color:var(--ai);font-weight:900}
+.chat{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  display:flex;flex-direction:column;overflow:hidden;min-height:380px;
+}
+.chat-head{background:var(--ai);color:#fff;padding:12px 16px;font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:8px}
+.chat-head::before{content:'';width:8px;height:8px;border-radius:50%;background:#B7F0E4;animation:blink 1.6s infinite}
+.chat-log{flex:1;padding:16px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;background:#FBFCFE;max-height:340px}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.86rem;opacity:0;animation:fadeUp .3s ease forwards}
+.msg.user{align-self:flex-end;background:var(--gov-blue);color:#fff;border-bottom-right-radius:4px}
+.msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--line);border-bottom-left-radius:4px;color:var(--ink)}
+.msg.bot b{color:var(--ai)}
+.chat-actions{padding:12px 16px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap}
+.chat-actions button{
+  border:1px solid var(--ai-line);background:var(--ai-soft);color:#0A6E5F;border-radius:20px;
+  font-family:inherit;font-size:.78rem;font-weight:700;padding:7px 13px;cursor:pointer;
+}
+.chat-actions button:hover{background:var(--ai);color:#fff}
+.chat-actions button:disabled{opacity:.4;cursor:default}
+
+/* ---------- 도입 효과 / 제안사 ---------- */
+.value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+@media(max-width:900px){.value-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.value-grid{grid-template-columns:1fr}}
+.value{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 18px}
+.value .num{font-family:'Noto Serif KR',serif;font-weight:900;font-size:1.5rem;color:var(--ai)}
+.value h4{font-size:.95rem;margin:6px 0 6px;color:var(--navy)}
+.value p{font-size:.8rem;color:var(--sub)}
+
+.vendor{
+  background:var(--navy);border-radius:var(--radius);color:#fff;
+  padding:30px 28px;display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:center;
+}
+@media(max-width:820px){.vendor{grid-template-columns:1fr}}
+.vendor h3{font-family:'Noto Serif KR',serif;font-weight:900;font-size:1.25rem;margin-bottom:10px}
+.vendor h3 em{font-style:normal;color:#8CEBD9}
+.vendor p{font-size:.88rem;color:#C4D4E8}
+.vendor ul{list-style:none;display:grid;gap:10px}
+.vendor li{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:10px;padding:11px 15px;font-size:.84rem;
+}
+.vendor li b{color:#8CEBD9}
+
+footer.site{
+  background:var(--navy-deep);color:#8FA2BC;text-align:center;
+  font-size:.75rem;padding:26px 20px;margin-top:56px;line-height:1.9;
+}
+footer.site b{color:#C7D6EA}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body class="ai-on">
+
+<!-- 데모 컨트롤 -->
+<div class="demo-bar">
+  <span class="tag">시연용 목업</span>
+  <span>용산구청 홈페이지 AI 고도화 제안 · 데이터는 가상 예시입니다</span>
+  <span class="grow"></span>
+  <label class="toggle-wrap" for="aiToggle">
+    <span class="toggle-label">신규 <b>AI 기능</b> 하이라이트</span>
+    <span class="toggle" id="aiToggle" role="switch" aria-checked="true" tabindex="0"></span>
+  </label>
+</div>
+
+<!-- 기존 구청 사이트 헤더 재현 -->
+<header class="site">
+  <div class="util"><span>로그인</span><span>회원가입</span><span class="lang">?? 7개 국어</span><span>사이트맵</span></div>
+  <div class="masthead">
+    <div class="emblem">용산</div>
+    <div class="sitename">서울특별시 용산구<small>YONGSAN-GU OFFICE</small></div>
+  </div>
+  <nav class="gnb" aria-label="주메뉴">
+    <a href="#">종합민원</a>
+    <a href="#">참여소통</a>
+    <a href="#">행정정보</a>
+    <a href="#">분야별정보</a>
+    <a href="#">고시·공고</a>
+    <a href="#">용산소개</a>
+    <a href="#" class="ai-nav">AI 구정도우미 <span class="ai-badge">NEW</span></a>
+  </nav>
+
+  <!-- 히어로: AI 통합검색 -->
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>구청에 <em>무엇이든</em> 물어보세요</h1>
+      <p class="lede">민원 안내 · 고시공고 · 지원사업을 AI가 한 번에 찾아 근거와 함께 ? 7개 국어로 답합니다</p>
+      <div class="searchbox ai-feature">
+        <div class="search-row">
+          <div class="orb" aria-hidden="true">AI</div>
+          <input id="qInput" type="text" placeholder="예) 대형폐기물은 어떻게 버리나요?" aria-label="AI 구정 질문 입력">
+          <button class="ask-btn" id="askBtn">질문하기</button>
+        </div>
+        <div class="chips" id="chips">
+          <button data-q="waste">대형폐기물 배출 방법</button>
+          <button data-q="hannam">한남동 재개발 공람 어디서 봐요?</button>
+          <button data-q="foreign" class="en">?? What support is available for foreign residents?</button>
+        </div>
+        <div class="answer" id="answer" aria-live="polite">
+          <div class="q" id="ansQ"></div>
+          <div class="a" id="ansA"></div>
+          <div class="src-row" id="ansSrc"></div>
+          <div class="note">※ 답변은 구청 공개 데이터(민원편람·고시공고·지원사업 공고)에 근거하며, 출처 카드를 누르면 원문으로 이동합니다. 질문 언어를 자동 감지해 같은 언어로 답합니다. (시연용 가상 데이터)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 기능 데모 -->
+  <section class="section">
+    <div class="section-head">
+      <h2>AI 행정 지원 기능</h2>
+      <span class="ai-badge">신규</span>
+      <span class="sub">탭을 눌러 각 기능을 직접 체험해 보세요</span>
+    </div>
+    <div class="feature-shell ai-feature">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-panel="p-summary">고시·공고 AI 요약</button>
+        <button role="tab" aria-selected="false" data-panel="p-review">민원 AI 사전접수 도우미</button>
+        <button role="tab" aria-selected="false" data-panel="p-match">내게 맞는 지원사업 매칭</button>
+      </div>
+
+      <!-- 고시공고 요약 -->
+      <div class="panel active" id="p-summary" role="tabpanel">
+        <div class="rec-list">
+          <button class="rec" data-sum="s1" aria-expanded="false">
+            <span class="date">2026.09.21</span>
+            <span class="title">한남동 ○구역 재정비촉진계획 변경(안) 주민 공람 공고</span>
+            <span class="go">AI 요약 보기 ?</span>
+          </button>
+          <div class="summary" id="s1">
+            <h4><span class="ai-badge">AI 3줄 요약</span> 생성 소요 1.1초 · 원문 34면 (도면 포함)</h4>
+            <ul>
+              <li>변경 핵심은 <b>공공보행통로 신설</b>과 획지 일부의 용적률 조정 ? 세대수 변동은 없습니다.</li>
+              <li>공람 기간은 9.21~10.5(14일간), 의견서는 재정비사업과 방문·우편·홈페이지 제출 모두 가능합니다.</li>
+              <li>내 거주지가 공람 대상 구역에 포함되는지는 첨부 도면 3면에서 확인할 수 있습니다.</li>
+            </ul>
+            <div class="kw-row"><span class="kw">#한남동</span><span class="kw">#재정비촉진</span><span class="kw">#주민공람</span><span class="kw">#의견제출 D-7</span></div>
+          </div>
+
+          <button class="rec" data-sum="s2" aria-expanded="false">
+            <span class="date">2026.09.14</span>
+            <span class="title">용산국제업무지구 조성 공사 관련 교통소통대책 공고</span>
+            <span class="go">AI 요약 보기 ?</span>
+          </button>
+          <div class="summary" id="s2">
+            <h4><span class="ai-badge">AI 3줄 요약</span> 생성 소요 1.0초 · 원문 22면</h4>
+            <ul>
+              <li>공사 기간 중 한강대로 일부 구간 <b>차로 축소</b> ? 10월부터 순차 적용됩니다.</li>
+              <li>마을버스 2개 노선 우회 운행, 임시 정류장 위치는 첨부 약도 참조.</li>
+              <li>이촌동·한강로동 방면 우회 경로와 공사 민원 전용 연락처가 안내되어 있습니다.</li>
+            </ul>
+            <div class="kw-row"><span class="kw">#국제업무지구</span><span class="kw">#한강대로</span><span class="kw">#교통통제</span></div>
+          </div>
+
+          <button class="rec" data-sum="s3" aria-expanded="false">
+            <span class="date">2026.09.07</span>
+            <span class="title">2026년 하반기 청년 월세 한시 지원사업 공고</span>
+            <span class="go">AI 요약 보기 ?</span>
+          </button>
+          <div class="summary" id="s3">
+            <h4><span class="ai-badge">AI 3줄 요약</span> 생성 소요 0.8초 · 원문 12면</h4>
+            <ul>
+              <li>지원 대상: 관내 거주 19~39세 무주택 청년, 월세 70만 원 이하 거주자 (소득 기준 별도).</li>
+              <li>지원 내용: 월 최대 20만 원, 최장 12개월 ? 신청은 10.1~10.31 온라인 접수.</li>
+              <li>중복 불가: 국토부 청년월세지원 수급 중인 경우 신청할 수 없습니다.</li>
+            </ul>
+            <div class="kw-row"><span class="kw">#청년월세</span><span class="kw">#후암동·해방촌</span><span class="kw">#10월접수</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 민원 사전접수 도우미 -->
+      <div class="panel" id="p-review" role="tabpanel">
+        <div class="review-grid">
+          <div>
+            <textarea id="minwonInput" aria-label="민원 내용 입력">해방촌 쪽 경사진 골목 가로등이 일주일째 꺼져 있어요. 밤에 길이 너무 어두워서 퇴근길이 무섭습니다. 빨리 고쳐주시고, 가능하면 CCTV도 추가로 설치해 주셨으면 합니다.</textarea>
+            <button class="check-btn" id="checkBtn">AI 사전분석 실행</button>
+          </div>
+          <div class="result-box" id="resultBox">
+            <div class="placeholder" id="resultPh">좌측에 민원 내용을 입력하고 [AI 사전분석 실행]을 누르면<br>소관 부서·처리 절차·유사 처리 사례가 표시됩니다.</div>
+            <div class="spinner" id="spinner">? 민원편람 1,800건 · 최근 처리사례 대조 중…</div>
+            <div id="resultList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 지원사업 매칭 -->
+      <div class="panel" id="p-match" role="tabpanel">
+        <div class="match-top">
+          <label for="matchSel" style="font-weight:700;font-size:.9rem">나의 상황 선택</label>
+          <select id="matchSel">
+            <option value="">? 해당되는 상황을 선택하세요 ?</option>
+            <option value="g1">청파동 거주 취업준비 청년 (20대)</option>
+            <option value="g2">이태원 거주 외국인 주민 가정</option>
+            <option value="g3">홀로 거주하시는 어르신</option>
+          </select>
+          <span class="ai-badge">자격요건 자동 대조</span>
+        </div>
+
+        <div class="match-set" id="g1">
+          <div class="match-card">
+            <div class="pct">적합도 95%</div>
+            <h4>청년 월세 한시 지원</h4>
+            <p>월 최대 20만 원 · 최장 12개월 · 10.1~10.31 접수</p>
+            <div class="why"><b>매칭 근거</b> ? 연령·거주지 요건 충족. 소득 기준(중위 150% 이하)만 확인하면 됩니다.</div>
+          </div>
+          <div class="match-card">
+            <div class="pct">적합도 88%</div>
+            <h4>취업준비 청년 자격증 응시료 지원</h4>
+            <p>연 최대 10만 원 · 상시 접수 · 국가기술자격 대상</p>
+            <div class="why"><b>매칭 근거</b> ? 취업준비 상태 해당. 올해 잔여 예산 소진 전 신청 권장.</div>
+          </div>
+        </div>
+
+        <div class="match-set" id="g2">
+          <div class="match-card">
+            <div class="pct">적합도 94%</div>
+            <h4>외국인 주민 생활정착 지원</h4>
+            <p>한국어 교육 · 생활 상담 · 글로벌빌리지센터 프로그램</p>
+            <div class="why"><b>매칭 근거</b> ? 거주 동 기준 도보권에 글로벌빌리지센터가 있어 대면 상담 연계가 가능합니다.</div>
+          </div>
+          <div class="match-card">
+            <div class="pct">적합도 87%</div>
+            <h4>다문화·외국인 가정 자녀 교육 지원</h4>
+            <p>이중언어 학습 지원 · 학교생활 적응 프로그램</p>
+            <div class="why"><b>매칭 근거</b> ? 자녀 연령 요건 충족. 신청 안내를 영어 등 7개 국어로 받아볼 수 있습니다.</div>
+          </div>
+        </div>
+
+        <div class="match-set" id="g3">
+          <div class="match-card">
+            <div class="pct">적합도 96%</div>
+            <h4>스마트플러그 안부확인 서비스</h4>
+            <p>1인가구 어르신 대상 · 전력 사용 패턴 기반 안부 확인</p>
+            <div class="why"><b>매칭 근거</b> ? 1인가구·연령 요건 충족. 동주민센터 방문 없이 전화 신청 가능합니다.</div>
+          </div>
+          <div class="match-card">
+            <div class="pct">적합도 89%</div>
+            <h4>어르신 무릎관절 수술비 지원</h4>
+            <p>만 60세 이상 · 소득 기준 충족 시 검사·수술비 지원</p>
+            <div class="why"><b>매칭 근거</b> ? 연령 요건 충족. 보건소 사전 검진 예약을 함께 안내해 드립니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 구민 챗봇 -->
+  <section class="section">
+    <div class="section-head">
+      <h2>구민 민원 AI 도우미</h2>
+      <span class="ai-badge">신규</span>
+    </div>
+    <div class="civic">
+      <div class="civic-copy">
+        <h3>어느 부서에 물어야 할지 몰라도, AI가 먼저 안내합니다</h3>
+        <p>대표전화 연결과 부서 돌려막기 없이, 민원의 소관 부서·필요 서류·처리 절차를 24시간 ? 외국인 주민에게는 모국어로 ? 안내합니다.</p>
+        <ul>
+          <li>민원 내용 분석 → <b>소관 부서 자동 분류</b> 및 담당 연락처 안내</li>
+          <li>유사 민원 처리 사례·평균 처리 기간 안내로 중복 문의 예방</li>
+          <li>증명서 발급·신고 절차의 <b>필요 서류 사전 체크</b></li>
+          <li>기존 7개 국어 누리집과 연계한 <b>다국어 질의응답</b> ? 정적 번역을 넘어 개별 질문에 답변</li>
+        </ul>
+      </div>
+      <div class="chat ai-feature">
+        <div class="chat-head">용산구청 AI 구정도우미</div>
+        <div class="chat-log" id="chatLog">
+          <div class="msg bot">안녕하세요! 궁금한 민원이나 구정 정보를 알려주시면 절차를 안내해 드릴게요. 아래 예시를 눌러 시연해 보세요.</div>
+        </div>
+        <div class="chat-actions">
+          <button id="demoChat1">예시: 이태원 불법주정차 신고</button>
+          <button id="demoChat2">예시: 전입신고 절차</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 도입 효과 -->
+  <section class="section">
+    <div class="section-head"><h2>기대 효과</h2></div>
+    <div class="value-grid">
+      <div class="value"><div class="num">34면 → 3줄</div><h4>고시공고 접근성</h4><p>한남 재정비 공람 등 방대한 공고문을 즉시 요약해 주민 정보 격차를 줄입니다.</p></div>
+      <div class="value"><div class="num">24시간</div><h4>민원 초기 안내</h4><p>소관 부서 분류와 절차 안내를 상시 제공해 대표전화·부서 단순 문의를 줄입니다.</p></div>
+      <div class="value"><div class="num">7개 국어</div><h4>국제도시 행정</h4><p>외국어 누리집의 정적 번역을 넘어, 외국인 주민의 개별 질문에 모국어로 답합니다.</p></div>
+      <div class="value"><div class="num">온프레미스</div><h4>데이터 주권</h4><p>구청 내부망에 구축하는 소버린 AI로, 주민 데이터가 외부로 나가지 않습니다.</p></div>
+    </div>
+  </section>
+
+  <!-- 제안사 -->
+  <section class="section">
+    <div class="vendor">
+      <div>
+        <h3>검증된 상용 AI로 구현합니다 ? <em>㈜투디지트</em></h3>
+        <p>금융 특화 LLM과 소버린 AI 전문기업 투디지트는 통신사 상용 서비스(AIRS)를 실제 운영 중이며, 공공·규제 산업이 요구하는 온프레미스 구축과 보안 검증 체계를 갖추고 있습니다.</p>
+      </div>
+      <ul>
+        <li><b>상용 레퍼런스</b> ? 통신사 AI 요금제 추천 서비스 AIRS 운영 중 (330턴 문맥 QA PASS 100%)</li>
+        <li><b>자체 LLM</b> ? Hermes·NOX 국산 모델, HuggingFace Open LLM 리더보드 세계 1위 95일 기록</li>
+        <li><b>보안 체계</b> ? OWASP Top 10 / LLM Top 10 · KISA/ISMS-P 기준 취약점 점검 문서화</li>
+        <li><b>정확한 답변</b> ? AgenticRAG 기반 출처 인용형 응답으로 환각 최소화</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <b>용산구청 AI 행정 플랫폼 ? 제안 시연용 목업</b><br>
+  본 화면의 고시공고·지원사업·민원 정보는 기능 시연을 위한 가상 데이터입니다.<br>
+  제안: ㈜투디지트 (2Digit) · 경기 성남시 분당구 판교
+</footer>
+
+<script>
+/* ---------- AI 하이라이트 토글 ---------- */
+const toggle=document.getElementById('aiToggle');
+function flip(){const on=document.body.classList.toggle('ai-on');toggle.setAttribute('aria-checked',on)}
+toggle.addEventListener('click',flip);
+toggle.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();flip()}});
+
+/* ---------- AI 통합검색 시뮬레이션 ---------- */
+const QA={
+  waste:{
+    q:'대형폐기물은 어떻게 버리나요?',
+    a:'대형폐기물(가구·가전 등)은 다음 절차로 배출하실 수 있습니다.\n\n1) 신고: 구청 홈페이지 또는 모바일 앱에서 품목·규격을 입력하고 수수료를 결제합니다. 동주민센터 방문 신고도 가능합니다.\n2) 스티커 부착: 발급된 신고필증(스티커)을 폐기물에 붙입니다.\n3) 배출: 지정한 날짜에 주거지 앞 지정 장소에 내놓으면 수거됩니다.\n\n참고로 폐가전(냉장고·세탁기 등)은 무상 방문수거 서비스를 이용하면 수수료 없이 배출할 수 있습니다.',
+    src:['민원편람 ? 대형폐기물 배출','청소행정과 안내 페이지','용산생활가이드']
+  },
+  hannam:{
+    q:'한남동 재개발 공람 어디서 봐요?',
+    a:'한남동 ○구역 재정비촉진계획 변경(안) 주민 공람이 진행 중입니다.\n\n? 공람 기간: 9.21 ~ 10.5 (14일간)\n? 열람 장소: 구청 재정비사업과, 한남동 주민센터, 구청 홈페이지 고시공고 게시판\n? 의견 제출: 공람 기간 내 방문·우편·온라인 모두 가능\n\n변경 핵심은 공공보행통로 신설과 일부 획지 용적률 조정이며, 세대수 변동은 없습니다. 내 거주지 포함 여부는 공고문 첨부 도면 3면에서 확인하실 수 있습니다.',
+    src:['고시공고 제2026-914호','재정비사업과 공람 안내','첨부 도면 p.3']
+  },
+  foreign:{
+    q:'What support is available for foreign residents?',
+    a:'Yongsan-gu offers several programs for foreign residents:\n\n? Global Village Center ? one-stop living consultation, Korean language classes, and community programs for the international community.\n? Living Guide for Foreign Residents ? housing, medical, transport and education information, available in 7 languages.\n? Civil complaints & certificates ? this AI assistant can guide you through any district office procedure in your own language.\n\nTell me your neighborhood (e.g. Itaewon, Hannam) and what you need, and I will walk you through the exact steps and required documents.',
+    src:['Foreign Residents Guide (EN)','Global Village Center','Multilingual Portal ? 7 languages']
+  }
+};
+const ansBox=document.getElementById('answer'),ansQ=document.getElementById('ansQ'),
+      ansA=document.getElementById('ansA'),ansSrc=document.getElementById('ansSrc'),
+      qInput=document.getElementById('qInput');
+let typeTimer=null;
+function runQA(key){
+  const d=QA[key]||QA.waste;
+  ansBox.classList.add('show');
+  ansQ.textContent='Q. '+d.q;
+  ansSrc.innerHTML='';
+  ansA.innerHTML='<span class="cursor"></span>';
+  clearInterval(typeTimer);
+  let i=0;
+  typeTimer=setInterval(()=>{
+    i+=3;
+    ansA.innerHTML=escapeHtml(d.a.slice(0,i))+'<span class="cursor"></span>';
+    if(i>=d.a.length){
+      clearInterval(typeTimer);
+      ansA.textContent=d.a;
+      d.src.forEach(s=>{const el=document.createElement('span');el.className='src';el.textContent=s;ansSrc.appendChild(el)});
+    }
+  },14);
+  ansBox.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+document.getElementById('chips').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  qInput.value=QA[b.dataset.q].q;runQA(b.dataset.q);
+});
+document.getElementById('askBtn').addEventListener('click',()=>{
+  const v=qInput.value;
+  if(/한남|재개발|공람/.test(v))runQA('hannam');
+  else if(/[A-Za-z]{3,}|foreign|english/i.test(v))runQA('foreign');
+  else runQA('waste');
+});
+qInput.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('askBtn').click()});
+
+/* ---------- 탭 ---------- */
+document.querySelectorAll('.tabs [role="tab"]').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tabs [role="tab"]').forEach(x=>x.setAttribute('aria-selected','false'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    t.setAttribute('aria-selected','true');
+    document.getElementById(t.dataset.panel).classList.add('active');
+  });
+});
+
+/* ---------- 고시공고 요약 토글 ---------- */
+document.querySelectorAll('.rec').forEach(r=>{
+  r.addEventListener('click',()=>{
+    const s=document.getElementById(r.dataset.sum);
+    const open=s.classList.toggle('show');
+    r.setAttribute('aria-expanded',open);
+    r.querySelector('.go').textContent=open?'접기 ?':'AI 요약 보기 ?';
+  });
+});
+
+/* ---------- 민원 사전분석 ---------- */
+const CHECKS=[
+  ['ok','소관 부서 분류 ? 가로등 고장은 <b>도로과(가로등팀)</b> 소관입니다. 접수 시 자동 이관됩니다.'],
+  ['info','유사 사례 ? 최근 3개월 관내 가로등 고장 민원 38건, 평균 처리 기간 3.5일 (긴급 시 익일 처리).'],
+  ['warn','복합 민원 감지 ? CCTV 추가 설치는 별도 소관(안전재난과)이며 주민 수요조사·예산 절차가 필요합니다. 민원을 2건으로 분리 접수하는 것을 권장합니다.'],
+  ['ok','필요 정보 확인 ? 경사지 골목은 정확한 위치 특정이 중요합니다. 도로명주소 또는 가로등 관리번호, 사진 첨부를 권장합니다.'],
+  ['info','진행 알림 ? 접수 완료 시 처리 단계별 알림톡을 받아보실 수 있습니다.']
+];
+document.getElementById('checkBtn').addEventListener('click',()=>{
+  const ph=document.getElementById('resultPh'),sp=document.getElementById('spinner'),list=document.getElementById('resultList');
+  ph.style.display='none';list.innerHTML='';sp.classList.add('show');
+  setTimeout(()=>{
+    sp.classList.remove('show');
+    CHECKS.forEach((c,i)=>{
+      const d=document.createElement('div');d.className='check-item';d.style.animationDelay=(i*.18)+'s';
+      d.innerHTML='<span class="stat '+c[0]+'">'+(c[0]==='ok'?'확인':c[0]==='warn'?'검토':'안내')+'</span><span>'+c[1]+'</span>';
+      list.appendChild(d);
+    });
+  },1400);
+});
+
+/* ---------- 지원사업 매칭 ---------- */
+document.getElementById('matchSel').addEventListener('change',e=>{
+  document.querySelectorAll('.match-set').forEach(c=>c.classList.remove('show'));
+  if(e.target.value)document.getElementById(e.target.value).classList.add('show');
+});
+
+/* ---------- 구민 챗봇 시뮬레이션 ---------- */
+const log=document.getElementById('chatLog');
+function push(cls,html,delay){
+  return new Promise(res=>{
+    setTimeout(()=>{
+      const m=document.createElement('div');m.className='msg '+cls;m.innerHTML=html;
+      log.appendChild(m);log.scrollTop=log.scrollHeight;res();
+    },delay);
+  });
+}
+async function chatDemo1(){
+  const b1=document.getElementById('demoChat1'),b2=document.getElementById('demoChat2');
+  b1.disabled=b2.disabled=true;
+  await push('user','이태원 거리에 관광버스랑 승용차가 계속 불법주차되어 있어요. 신고하려면 어떻게 하나요?',150);
+  await push('bot','불법주정차 신고 방법을 안내해 드릴게요.<br><br>① <b>안전신문고 앱</b> ? 1분 간격 사진 2장 촬영 후 제출 (즉시 단속 요청)<br>② <b>구청 주차관리과</b> 전화 신고<br><br>이태원 관광특구 주변 도로는 <b>주말·야간 단속 강화 구간</b>이 별도로 운영됩니다. 정확한 위치(도로명주소)를 알려주시면 단속 가능 구역인지 바로 확인해 드릴게요.',1200);
+  await push('bot','참고로 상습 구간은 단속 요청 이력이 누적되면 고정식 단속 카메라 설치 검토 대상이 됩니다. 이번 신고도 이력에 반영됩니다.',1100);
+  b1.disabled=b2.disabled=false;
+}
+async function chatDemo2(){
+  const b1=document.getElementById('demoChat1'),b2=document.getElementById('demoChat2');
+  b1.disabled=b2.disabled=true;
+  await push('user','다음 주에 이촌동으로 이사하는데 전입신고는 어떻게 하나요?',150);
+  await push('bot','전입신고는 <b>이사한 날부터 14일 이내</b>에 하시면 됩니다.<br><br>① <b>온라인</b> ? 정부24에서 공동인증서로 신고 (방문 불필요)<br>② <b>방문</b> ? 이촌동 주민센터, 신분증 지참<br><br>세대주가 아닌 세대원이 신고하는 경우 세대주 확인 절차가 추가됩니다.',1200);
+  await push('bot','전입신고와 함께 처리하면 편한 것들도 챙겨드릴게요: <b>자동차 주소 변경(자동 연계)</b>, <b>우편물 주소 이전 서비스</b>, 초등학생 자녀가 있다면 <b>전학 절차</b>. 해당되는 항목이 있으신가요?',1100);
+  b1.disabled=b2.disabled=false;
+}
+document.getElementById('demoChat1').addEventListener('click',chatDemo1);
+document.getElementById('demoChat2').addEventListener('click',chatDemo2);
+</script>
+</body>
+</html>
